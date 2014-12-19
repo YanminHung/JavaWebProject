@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.*,java.text.*"%>
 <!DOCTYPE html>
 
 <%
@@ -13,6 +13,12 @@ if (!login.equals("Employee"))
 {
     response.sendRedirect("../login.jsp");
 }
+Empolyee m = (Empolyee) session.getAttribute("Empolyee");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd");
+Date dt=new Date();
+String dts=sdf.format(dt);
+String dts2 = sdf2.format(dt);
 %>
 
 <html lang="en">
@@ -115,32 +121,31 @@ textarea{
     padding: 6px;
 }
 </style>
-</head>
-
 <script type="text/javascript">    
 function formSubmit( submitValue )
 {
-	var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
-	
-	var Dou_Date = document.getElementById("Dou_Date").value;
-	
-	var Dou_Speed;
-	var obj = document.getElementsByName( "Dou_Speed" );	
-	for( i = 0; i < obj.length; i++ )
+    var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
+    
+    var Dou_Date = document.getElementById("Dou_Date").value;
+    
+    var Dou_Speed;
+    var obj = document.getElementsByName( "Dou_Speed" );    
+    for( i = 0; i < obj.length; i++ )
     {
-		if( obj[ i ].checked )
-		{
-			Dou_Speed = obj[ i ].value;
-		}
+        if( obj[ i ].checked )
+        {
+            Dou_Speed = obj[ i ].value;
+            break;
+        }
     }
-	
-	var site = document.all.Dou_FlowType.selectedIndex; 
-	var Dou_FlowType = document.all.Dou_FlowType.options[site].value;
-	
-	site = document.all.Dou_Type.selectedIndex; 
-	var Dou_Type = document.all.Dou_Type.options[site].value;
-	
-	var Dou_Keynote = document.all.Dou_Keynote.value;
+    
+    var site = document.all.Dou_FlowType.selectedIndex; 
+    var Dou_FlowType = document.all.Dou_FlowType.options[site].value;
+    
+    sit = document.all.Dou_Type.selectedIndex; 
+    var Dou_Type = document.all.Dou_Type.options[site].value;
+    
+    var Dou_Keynote = document.all.Dou_Keynote.value;
     var Dou_Content = document.all.Dou_Content.value;
     
     var msgStr = "Dou_TmpNo=" + Dou_TmpNo + "&" +
@@ -160,11 +165,16 @@ function formSubmit( submitValue )
 }
     
 </script>
-
-
+</head>
 <body>
 <div id="table-warp">
-    <form name = "form1" action="uploadcode.jsp" method="post" enctype="multipart/form-data" >
+    <form action="detailAdd.jsp" method="post" >
+    <!-- 隱藏 下列 直接預設，name直接抓取 Empolyee -->
+    <input name="name" id="name" type="hidden" value=<%out.print(m.getNo()); %>>
+    <input name="Status" id="Status" type="hidden" value=0>
+    <input name="Dou_IsHistoryCheck" id="Dou_IsHistoryCheck" type="hidden" value=0>
+    <input name="Dou_Link" id="Dou_Link" type="hidden" value=<%out.print(0); %>>
+    <input name="Dou_Draft" id="Dou_Draft" type="hidden" value=0>
         <div class="title">新增文件</div>
         <div class="table-body">
             <table id="table-b">
@@ -172,9 +182,9 @@ function formSubmit( submitValue )
                 <!--更改下面-->
                 <tr>
                     <td width="150" align="center">申請編號</td>
-                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo"></td>
+                    <td><input type="text" name="Dou_TmpNo" value="<% out.print(m.getId() + dts); %>"></td>
                     <td width="150" align="center">發文日期</td>
-                    <td><input type="text" id="Dou_Date" name="Dou_Date"></td>
+                    <td><input type="text" name="Dou_Date" value="<% out.print(dts2); %>"></td>
                 </tr>
           
                 <tr>
@@ -207,8 +217,8 @@ function formSubmit( submitValue )
                     <td width="150" align="center">文件類型</td>
                     <td>
                         <select name="Dou_Type" id="Dou_Type">
-                            <option value=1>公告</option>
-                            <option value=2>一般文件</option>
+                            <option value="1">公告</option>
+                            <option value="2">一般文件</option>
                         </select>
                     </td>
                 </tr>
