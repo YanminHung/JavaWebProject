@@ -18,6 +18,14 @@ if (!login.equals("Employee"))
 
 <html lang="en">
 <head>
+<script type="text/javascript">    
+    function ShowPage( Lib_TmpId )
+    {
+        document.location.href="doc_list.jsp?Lib_TmpId=" + Lib_TmpId;
+    }
+</script>
+    
+    
     <meta charset="UTF-8">
     <title>歷史查詢</title>
 <style>
@@ -98,6 +106,23 @@ a{
 a:hover{
     color:#58C3E5;
 }
+
+td a{
+    text-decoration: none;
+    color:black;
+}
+td a:hover{
+    text-decoration: none;
+    color:#58C3E5;
+}
+#table-b tr:hover{
+    background: gray;
+    color: white;
+}
+#table-b
+{
+    cursor: pointer;
+}  
 </style>
 </head>
 <body>
@@ -128,8 +153,9 @@ a:hover{
             {
                 for (int i=0;i<r.length;i++)
                 {
+                    String funcStr = "\"ShowPage(" + r[i].getLib_TmpId() + ")\"";
             %>
-	            <tr>
+                    <tr onclick=<% out.print( funcStr ); %> >
 	                <td><% out.print(r[i].getDou_Speed());  %></td>
 	                <td><% out.print(r[i].getDou_Type()); %></td>      
 	                <td>
@@ -143,9 +169,7 @@ a:hover{
 	                    }
 	                %>
 	                </td>
-	                <td>
-	                    <a href="doc_list.jsp?Lib_TmpId=<% out.print(r[i].getLib_TmpId()); %>"><%=r[i].getDou_Keynote()%></a>
-	                </td> 
+	                <td><%=r[i].getDou_Keynote()%></td> 
 	            </tr>
             <%  }
             }

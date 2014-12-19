@@ -209,8 +209,10 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
             public DocLibraryList[] findAnnouncementAll() {
 
                 try {
-                    String SQL ="select * from LibraryList where Dou_Type=1 and "
-                                +"DATEDIFF(m,Dou_Date,SYSDATETIME()) <=3 Order By Dou_Date desc";
+                    String SQL ="select * from LibraryList where Dou_Type=1 and (Lib_SetTop=1 or "
+                                +"( Lib_SetTop!=1 and DATEDIFF(m,Dou_Date,SYSDATETIME()) <=3 )) "
+                                +" Order By  Lib_SetTop desc,Dou_Date desc"; 
+                    
                     PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                     ResultSet rs = pstmt.executeQuery();
                     ArrayList<DocLibraryList> r = new ArrayList<DocLibraryList>();
