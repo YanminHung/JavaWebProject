@@ -1,0 +1,156 @@
+﻿*,body{
+	margin:0px;;
+	padding:0px;
+	}
+#head{
+	width:100%;
+	margin:0px auto;
+	background:#297AAE;
+	height: 80px;
+}
+#logo{
+	display: block;
+	background:url(../images/logo.png) no-repeat;
+	float: left;
+	width: 200px;
+	height: 50px;
+	margin-left: 25px;
+	margin-top: 25px;
+}
+#toptool{
+}
+#toptool ul{
+	list-style-type: none;
+}
+#toptool li{
+	display: inline-block;
+	position:relative;
+	float: right;
+	width: 79px;
+	height: 79px;
+	text-align: center;
+	line-height: 79px;
+}
+#toptool li img{
+	vertical-align: middle;
+}
+#toptool li a{
+	display: block;
+	text-decoration:none;
+	color:white;
+}
+#toptool li a:hover{
+	background: #1F5C83;
+	cursor: pointer;
+}
+.logout:hover{
+	background: #1F5C83;
+}
+#toptool ul ul{
+	position: absolute;
+	left: 0px;
+	width: 79px;
+	display: none;
+}
+#toptool ul li ul li{
+	background: #297AAE;
+	width: 79px;
+	height: 40px;
+	line-height: 40px;
+	color:white;
+	font-family:微軟正黑體;
+	border-top: 1px solid #286EAA;
+}
+#toptool ul li:hover>ul{
+	display: block;
+}
+#lside{
+    width:203px;
+    height:563px;
+    background:#2A3D4E;
+    float: left;
+    position:absolute;
+    left:0;
+}
+#hello{
+	text-align: center;
+	color: #EBEFF0;
+	height: 100px;
+	background:#2A3D4E;
+	border-bottom: 1px solid #25364E;
+}
+.span1{
+	font-size: 24px;
+	padding-top: 10px;
+	font-family: 'Montserrat', sans-serif,微軟正黑體;
+	color:white;
+	display: inline-block;
+
+}
+.span2{
+	font-size: 40px;
+	margin: 0px auto;
+	text-align: center;
+	display: block;
+	line-height: 40px;
+	height: 70px;
+	font-family: 'Montserrat', sans-serif,微軟正黑體;
+  	color: white;
+    text-shadow: 1px 1px 0px #2a3d4e,2px 2px 0px white;
+  	font-weight: bold;
+}
+.menu{
+	background:#2A3D4E;
+	color:white;
+	height:50px;
+	line-height:50px;
+	font:18px;
+	border-bottom: 1px solid #25364E;
+	padding: 0px 30px;
+	font-family: 微軟正黑體;
+	box-shadow: inset 5px 0px 0px #476279;
+	}
+.menu:hover{
+	background:#398FCB;
+	cursor: pointer;
+	box-shadow: inset 5px 0px 0px #2B6B98;
+	}
+.admin:hover{
+	background:#2A3D4E;
+	}
+.sub{
+	background:#3F4148;
+	}
+.sub li{
+	list-style-type:none;
+	height:50px;
+	line-height:50px;
+	color:white;
+	padding:0px 50px;
+	font-family: 微軟正黑體;
+	}
+.sub li a{
+	display: block;
+	text-decoration:none;
+	color:white;
+	}
+.sub li:hover{
+	background:#2EA55D;
+	}
+#right{
+    float: right;
+    width: 100%;
+}
+#con{
+    height:563px;
+    background: #ECEFF0;
+    margin-left: 200px;
+}
+#iframe-warp{
+    margin: 0px auto;
+    text-align: center;
+    height: 100%;
+}
+.clr{
+    clear:both;
+    }

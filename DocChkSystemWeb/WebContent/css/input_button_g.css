@@ -1,0 +1,28 @@
+.input_button_g{
+  width: 75px;
+  height: 30px;
+  font-size: 16px;
+  font-family: 微軟正黑體;
+  background: #0dadb7;
+  border: 2px solid white;
+  border-radius: 4px;
+  color:white;
+  outline:medium;
+}
+.input_button_g:visited{
+  text-decoration: none;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
+    border: none;
+    outline:medium;
+}
+.input_button_g:hover{
+	 cursor: pointer;
+}
+.input_button_g:active{
+  text-decoration: none;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
+    border: none;
+    outline:medium;
+}
