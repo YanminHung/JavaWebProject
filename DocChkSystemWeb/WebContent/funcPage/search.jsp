@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.Date,java.text.DateFormat" %>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.Date,java.text.SimpleDateFormat" %>
 <%
 String login = "";
 if (session.getAttribute("Login") != null )
@@ -142,11 +142,12 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
                         <td>開始日期</td>
                         <td><input type="date" id="start" name="start" value="1970-01-01" min="1970-01-01"></td>
                         <td>結束日期</td>
-                        <script type="text/javascript"> 
+                        <% 
                         Date myDate = new Date();
-                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                        </script>
-                        <td><input type="date" id="end" name="end" value="formatter" max="formatter"></td>
+                        SimpleDateFormat formatter;
+                        formatter = new SimpleDateFormat ("yyyy-MM-dd");
+                        %>
+                        <td><input type="date" id="end" name="end" value="<%=formatter.format(myDate)%>" max="<%=formatter.format(myDate)%>"></td>
                     </tr>
                     <tr>
                         <td>部門</td>
