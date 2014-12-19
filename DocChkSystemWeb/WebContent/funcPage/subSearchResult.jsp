@@ -36,8 +36,6 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 <head>
     <meta charset="UTF-8">
     <title>文件簽核系統-查詢結果</title>
-    
-    <link rel="stylesheet" href="../css/buttons_small_delete.css"> 
 <style>
 *{
     margin:0px 0px;
@@ -67,7 +65,9 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     }
 .table-body{
     width:100%; 
-    height:800px;
+    height:auto !important;
+    height:300px;
+    max-height:300px;
     overflow-y:scroll;
     text-align:left;
     background:#e9e9e9;
@@ -130,8 +130,6 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
                 <tr><td><% out.print("----------------------------------------------------"); %></td></tr>
                 <tr>
 				<% } %>
-                
-                              
             </tbody>
         </table>
     </div>

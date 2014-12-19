@@ -18,7 +18,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>文件簽核系統-文件查詢</title>
-    <link rel="stylesheet" href="css/input_button_g.css">
+    <link rel="stylesheet" href="../css/input_button_g.css">
 <style>
 *{
     margin:0px 0px;
@@ -28,7 +28,6 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     width:800px;
     margin:6px auto;
     text-align:center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
 .title{
     width: 788px;
@@ -83,6 +82,15 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     background:#0dadb7;
     padding: 6px;
 }
+#iframe-con{
+        height: 100%;
+}
+#con{
+    width:800px;
+    height:221px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    margin:0px 0px 6px;
+}
 </style>
 </head>
 
@@ -108,6 +116,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 
 <body>
 <div id="table-warp">
+	<div id="con">
     <form action="" method="post">
         <div class="table-head">
             <div class="title">文件查詢</div>
@@ -167,11 +176,12 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
         </div>
             <div id="delete">
                 <input type="button" value="搜尋" name='search' class="input_button_g" onclick="ifram_subChange()" />
-                <input type="button" value="重填" name='delete' class="input_button_g" >
+                <input type="reset" value="重填" name='delete' class="input_button_g" >
                 
             </div>
     </form>
-    <div class"iframe-warp">
+    </div>
+    <div class="iframe-con">
         <iframe id="subPage" name="subPage" width="100%" height="350" src="subSearchResult.jsp" frameborder="0" scrolling="no"></iframe>
     </div>
 </div>
