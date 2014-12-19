@@ -20,12 +20,15 @@ if (!login.equals("Employee"))
     <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/input_button_g.css">
 <script type="text/javascript"> 
-function check_all(obj,cName) 
-{ 
-    var checkboxs = document.getElementsByName(cName); 
-    for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;} 
-} 
-</script> 
+$(document).ready(function(){
+    $("#slidingDiv").hide();
+    $(".show_hide").show();
+	$('.show_hide').click(function(){
+	$("#slidingDiv").slideToggle();
+	});
+
+});
+</script>
 <style>
 *{
     margin:0px 0px;
@@ -33,9 +36,10 @@ function check_all(obj,cName)
     }
 #table-warp{
     width:800px;
+    height: 500px;
     margin:6px auto;
     text-align:center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    
     }
 .title{
     width: 788px;
@@ -55,7 +59,9 @@ function check_all(obj,cName)
     }
 .table-body{
     width:100%; 
-    height:430px;
+    height:auto !important;
+    height:150px;
+    max-height:150px;
     overflow-y:scroll;
     text-align:left;
     background:#e9e9e9;
@@ -63,11 +69,12 @@ function check_all(obj,cName)
     font-size: 16px;
     }
 .table-head th:first-of-type,.table-body td:first-of-type{
-    width:50px;
+    width:30px;
 }
 .table-head th:nth-child(2),.table-body td:nth-child(2)
 {
-    width:50px;
+    width:70px;
+    text-align: center;
 }
 .table-head th:nth-child(3),.table-body td:nth-child(3)
 {
@@ -102,18 +109,39 @@ function check_all(obj,cName)
     background:#0dadb7;
     padding: 6px;
 }
+#top{
+	width: 800px;
+	height: 257px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);	
+	position: relative;
+}
+#slidingDiv{
+	
+	position:relative;
+	top:10px;
+}
+#table-b tr:hover{
+	background: gray;
+	color: white;
+	}
+a{
+	text-decoration: none;
+	color:black;
+	display: block;
+}
 </style>
 </head>
 <body>
 <div id="table-warp">
-<form action="" method="">
+<div id="top">
+<form action="" method="post">
     <div class="table-head">
         <div class="title">進度查詢</div>
         <table id="table-h">
             <thead>
                 <tr>
                 <th><input type="checkbox" name="allselect" id="allselect" onclick="check_all(this,'select')"/></th>
-                <th>狀態</th>
+                <th>審核狀態</th>
                 <th>日期</th>
                 <th>主旨</th>
                 </tr>
@@ -126,219 +154,74 @@ function check_all(obj,cName)
                 <!--更改下面-->
                 <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td><a class="show_hide" name="show_hide" href="#">普</a></td>
+                    <td><a class="show_hide" name="show_hide" href="#">普</a></td>
+                    <td><a class="show_hide" name="show_hide" href="#">測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</a></td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
                     <td>普</td>
                     <td>2014-07-31</td>
                     <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>
-                <tr>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
+                </tr>                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
+                    <td>普</td>
+                    <td>2014-07-31</td>
+                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
                 </tr>
             </tbody>
         </table>
@@ -347,6 +230,10 @@ function check_all(obj,cName)
             <input type="submit" value="刪除" name='delete' class="input_button_g">
         </div>
 </form>
+</div>
+	<div id="slidingDiv" name="slidingDiv">
+		<iframe name="s" width="100%" height="250" src="doc_process.jsp" frameborder="0" scrolling="no"></iframe>
+	</div>
 </div>
 </body>
 </html>
