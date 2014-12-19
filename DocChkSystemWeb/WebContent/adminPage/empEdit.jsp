@@ -15,6 +15,8 @@ if (!login.equals("administrator"))
 
 int emp_No = Integer.valueOf(request.getParameter("Emp_No"));
 String No="empAdd.jsp?msg=1&Emp_No=" + emp_No;
+EmpolyeeDAOImpl impl = new EmpolyeeDAOImpl();
+Empolyee emp =  impl.findByNo(emp_No);
 %>
 
 <!DOCTYPE html>
@@ -132,77 +134,80 @@ a{
                 <tr>
                     <td>員工編號</td>
                     <td>
-                        <input type="text" name="Id" id="" >
+                        <input type="text" name="Id" id="Id" value="<%out.print(emp.getId()); %>" >
                     </td>
                     <td>員工密碼</td>
                     <td>
-                        <input type="password" name="Pwd" id="">
+                        <input type="password" name="Pwd" id="Pwd" value="<%out.print(emp.getPwd()); %>">
                     </td>
                 </tr>
                 <tr>
                     <td>員工姓名</td>
                     <td>
-                        <input type="text" name="Name" >
+                        <input type="text" name="Name" id="Name" value="<%out.print(emp.getName()); %>">
                     </td>
-                    <td>員工性別</td>
+                    <!--  <td>員工性別</td>
                     <td>
                         <input type="radio" name="sex" id="sex1" value="1">男性
                         <input type="radio" name="sex" id="sex2" value="2">女性
-                    </td>
+                    </td> -->
                 </tr>
                 <tr>
                     <td>員工生日</td>
                     <td>
-                        <input type="date" name="BirthD" id="" >
+                        <input type="date" name="BirthD" id="BirthD" value="<%out.print(emp.getBirthD()); %>">
                     </td>
                     <td>電子郵件</td>
                     <td>
-                        <input type="email" name="Email" id="email" value="" size="30">
+                        <input type="email" name="Email" id="Email" value="<%out.print(emp.getEmail()); %>" size="30">
                     </td>
                 </tr>
                 <tr>
                     <td>電話(住家)</td>
                     <td>
-                        <input type="text" name="" id="" size="2" maxlength="5">-<input type="text" name="Tel" id="" size="13" maxlength="20">
+                        <input type="text" name="" id="" size="2" maxlength="5">-<input type="text" name="Tel" id="Tel" value="<%out.print(emp.getTel()); %>" size="13" maxlength="20" >
                     </td>
                     <td>電話手機</td>
                     <td>
-                        <input type="text" name="CellPhone" id="CellPhone" value="" size="20" maxlength="20">
+                        <input type="text" name="CellPhone" id="CellPhone" value="<%out.print(emp.getCellPhone()); %>" size="20" maxlength="20">
                     </td>
                 </tr>
                 <tr>
                     <td>通訊地址</td>
                     <td colspan="3">
-                        <input type="text" name="Addr" id="" size="50" maxlength="20">
+                        <input type="text" name="Addr" id="Addr" value="<%out.print(emp.getAddr()); %>" size="50" maxlength="20">
                     </td>
                 </tr>
                 <tr>
                     <td>員工到職日</td>
                     <td>
-                        <input type="date" name="InD" id="">
+                        <input type="date" name="InD" id="InD" value="<%out.print(emp.getInD()); %>">
                     </td>
                    <!-- <td>員工Title</td> -->
                     <td>
-                        <input type="hidden" name="Title" id="" size="20" value="0">
+                        <input type="hidden" name="Title" id="Title" size="20" value="0">
                     </td>
                 </tr>
                 <tr>
                     <td>員工Depart</td>
                     <td>
-                    	<select name="Depart" id="Depart">
+                    	<select name="Depart" id="Depart" >
                     	
+                    	<option value=<%out.print(emp.getDepart());%> SELECTED> <%out.print(emp.getDepart());%> </option>
                     	<option value=總經理室>總經理室  </option>
                     	<option value=管理部>管理部  </option>
                     	<option value=財務部>財務部  </option>
                     	<option value=資訊部>資訊部  </option>
                     	<option value=業務部>業務部  </option>
                     	<option value=製造部>製造部  </option>
+                    	
                     	</select>
-                        <!--  <input type="text" name="Depart" size="10"> -->
+                    	<!--<script>document.Depart.value = "<%out.print(emp.getDepart()); %>"</script>
+                          <input type="text" name="Depart" size="10"> -->
                     </td>
                     <td>直屬主管</td>
                     <td>
-						<select name="BossPosId" id="BossPosId">
+						<select name="BossPosId" id="BossPosId" value="<%out.print(emp.getBossPosId()); %>">
 						<%
 						Document_PositionDAOImpl impl2=new Document_PositionDAOImpl();
 						ArrayList<Document_Position> flowList = impl2.getAll();
@@ -217,7 +222,7 @@ a{
                 <tr>
                     <td>員工離職日</td>
                     <td colspan="3">
-                        <input type="date" name="OutD" id="">
+                        <input type="date" name="OutD" id="OutD" value="<%out.print(emp.getOutD()); %>">
                     </td>
                 </tr>
             </tbody>

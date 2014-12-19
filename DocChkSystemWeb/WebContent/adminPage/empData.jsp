@@ -51,7 +51,7 @@ if (!login.equals("administrator"))
 	}
 .table-body{
 	width:100%; 
-	height:500px;
+	height:100%;
 	overflow-y:scroll;
 	text-align:left;
     background:#e9e9e9;

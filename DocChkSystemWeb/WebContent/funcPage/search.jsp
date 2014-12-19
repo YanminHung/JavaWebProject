@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.Date,java.text.DateFormat" %>
 <%
 String login = "";
 if (session.getAttribute("Login") != null )
@@ -15,9 +15,10 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>文件簽核系統-文件查詢</title>
-    <link rel="stylesheet" href="../css/input_button_g.css">
+    <link rel="stylesheet" href="css/input_button_g.css">
 <style>
 *{
     margin:0px 0px;
@@ -84,6 +85,27 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 }
 </style>
 </head>
+
+<script type="text/javascript">
+	//var request = false;
+	//request =new XMLHttpRequest();
+    function ifram_subChange()
+    {
+		var url = "subSearchResult.jsp?doctype=" 	+ document.getElementById("doctype").value
+    					  +		"&type="   			+ document.getElementById("type").value
+    					  +		"&key="   			+ document.getElementById("key").value
+    					  +		"&name="   			+ document.getElementById("name").value
+    					  +		"&depart=" 			+ document.getElementById("depart").value
+    					  +		"&start="   		+ document.getElementById("start").value
+    					  +		"&end="   			+ document.getElementById("end").value;
+    	//alert(url);
+    	
+    	var iframeElement = document.getElementById("subPage");
+        iframeElement.src = url;
+    }
+    
+</script>
+
 <body>
 <div id="table-warp">
     <form action="" method="post">
@@ -101,14 +123,15 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
                     <!--更改下面-->
                     <tr>
                         <td>查詢編號</td>
-                        <td><input type="text" name="doctype"></td>
+                        <td><input type="text" name="doctype" id="doctype"></td>
                         <td>關鍵字</td>
-                        <td><input type="text" name="key"></td>
+                        <td><input type="text" name="key" id="key"></td>
                     </tr>
                     <tr>
                         <td>文件類型</td>
                         <td colspan="3" class="tdselect">
-                            <select name="select" id="select">
+                            <select name="type" id="type">
+                                <option value="">全部</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -117,32 +140,38 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
                     </tr>
                     <tr>
                         <td>開始日期</td>
-                        <td><input type="text" name="start"></td>
+                        <td><input type="date" id="start" name="start" value="1970-01-01" min="1970-01-01"></td>
                         <td>結束日期</td>
-                        <td><input type="text" name="end"></td>
+                        <script type="text/javascript"> 
+                        Date myDate = new Date();
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        </script>
+                        <td><input type="date" id="end" name="end" value="formatter" max="formatter"></td>
                     </tr>
                     <tr>
                         <td>部門</td>
                         <td class="tdselect">
-                            <select name="select" id="select">
+                            <select name="depart" id="depart">
+                            	<option value="">全部</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                             </select>
                         </td>
                         <td>承辦人</td>
-                        <td><input type="text" name="承辦人"></td>
+                        <td><input type="text" name="name" id="name"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
             <div id="delete">
-                <input type="button" value="搜尋" name='delete' class="input_button_g">
-                <input type="reset" value="重填" name='delete' class="input_button_g" >
+                <input type="button" value="搜尋" name='search' class="input_button_g" onclick="ifram_subChange()" />
+                <input type="button" value="重填" name='delete' class="input_button_g" >
+                
             </div>
     </form>
     <div class"iframe-warp">
-        <iframe name="s" width="100%" height="350" src="subSearchResult.jsp" frameborder="0" scrolling="no"></iframe>
+        <iframe id="subPage" name="subPage" width="100%" height="350" src="subSearchResult.jsp" frameborder="0" scrolling="no"></iframe>
     </div>
 </div>
 </body>

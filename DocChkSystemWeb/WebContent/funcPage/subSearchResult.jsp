@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*"%>
 <%
 String login = "";
 if (session.getAttribute("Login") != null )
@@ -12,11 +12,31 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     response.sendRedirect("../login.jsp");
 }
 %>
+<%
+	request.setCharacterEncoding( "UTF-8" ) ; 
+	
+	String LibDocNo 	="%"+request.getParameter("doctype")+"%";
+	String DouType 		="%"+request.getParameter("type")+"%";
+	String DocKeynote	="%"+request.getParameter("key")+"%";
+	String Emp_Name		="%"+request.getParameter("name")+"%";
+	String Emp_Depart	="%"+request.getParameter("depart")+"%";
+	String Dou_Date_B	=request.getParameter("start");
+	String Dou_Date_E	=request.getParameter("end");
+	
+	
+	
+	DocLibraryListDAODBImpl impl=new DocLibraryListDAODBImpl();
+	DocLibraryList[] r = impl.SearchDocData(LibDocNo, DouType, DocKeynote , Emp_Name , Emp_Depart , Dou_Date_B, Dou_Date_E);
+	
+	
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>文件簽核系統-查詢結果</title>
+    
     <link rel="stylesheet" href="../css/buttons_small_delete.css"> 
 <style>
 *{
@@ -76,6 +96,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     }
 </style>
 </head>
+
 <body>
 <div id="table-warp">
 <form action="" method="">
@@ -91,102 +112,26 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
         <table id="table-b">
             <tbody>
                 <!--更改下面-->
-                <tr>
-                    <td>查詢編號</td>
+                <% for(int i=0 ; i<r.length ; i++)
+				{ 
+				%>
+		   		<tr>
+                    <td>查詢編號:<%out.print(r[i].getLib_DocNo()); %></td>
                 </tr>
                 <tr>
-                    <td>文件類型</td>
+                    <td>文件類型:<%out.print(r[i].getDou_Type()); %></td>
                 </tr>
                 <tr>
-                    <td>開始日期</td>
+                    <td>開始日期:<%out.print(r[i].getDou_Date()); %></td>
                 </tr>
                 <tr>
-                    <td>部門</td>
+                    <td>部門:<%out.print(r[i].getEmp_Depart()); %></td>
                 </tr>
+                <tr><td><% out.print("----------------------------------------------------"); %></td></tr>
                 <tr>
-                    <td>查詢編號</td>
-                </tr>
-                <tr>
-                    <td>文件類型</td>
-                </tr>
-                <tr>
-                    <td>開始日期</td>
-                </tr>
-                <tr>
-                    <td>部門</td>
-                </tr>
-                <tr>
-                    <td>查詢編號</td>
-                </tr>
-                <tr>
-                    <td>文件類型</td>
-                </tr>
-                <tr>
-                    <td>開始日期</td>
-                </tr>
-                <tr>
-                    <td>部門</td>
-                </tr>
-                <tr>
-                    <td>查詢編號</td>
-                </tr>
-                <tr>
-                    <td>文件類型</td>
-                </tr>
-                <tr>
-                    <td>開始日期</td>
-                </tr>
-                <tr>
-                    <td>部門</td>
-                </tr>
-                <tr>
-                    <td>查詢編號</td>
-                </tr>
-                <tr>
-                    <td>文件類型</td>
-                </tr>
-                <tr>
-                    <td>開始日期</td>
-                </tr>
-                <tr>
-                    <td>部門</td>
-                </tr>
-                <tr>
-                    <td>查詢編號</td>
-                </tr>
-                <tr>
-                    <td>文件類型</td>
-                </tr>
-                <tr>
-                    <td>開始日期</td>
-                </tr>
-                <tr>
-                    <td>部門</td>
-                </tr>
-                <tr>
-                    <td>查詢編號</td>
-                </tr>
-                <tr>
-                    <td>文件類型</td>
-                </tr>
-                <tr>
-                    <td>開始日期</td>
-                </tr>
-                <tr>
-                    <td>部門</td>
-                </tr>
-                <tr>
-                    <td>查詢編號</td>
-                </tr>
-                <tr>
-                    <td>文件類型</td>
-                </tr>
-                <tr>
-                    <td>開始日期</td>
-                </tr>
-                <tr>
-                    <td>部門</td>
-                </tr>               
+				<% } %>
+                
+                              
             </tbody>
         </table>
     </div>
