@@ -12,9 +12,9 @@ public interface DetailDAO {
     public Document_Detail searchNo(int Dou_No);
     public Document_Detail searchTmpNo(String TmpNo);
     public ArrayList<Document_Detail> searchKeynote(String Keynote);
-    public ArrayList<Document_Detail> searchAuthor(String Author);
-    public ArrayList<Document_Detail> searchDraftByAuthor(String Author);
-    public ArrayList<Document_Detail> searchNoDraftByAuthor(String Author);
+    public ArrayList<Document_Detail> searchAuthor(int Author);
+    public ArrayList<Document_Detail> searchDraftByAuthor(int Author);
+    public ArrayList<Document_Detail> searchNoDraftByAuthor(int Author);
     public ArrayList<Document_Detail> searchData(String Date);
 
 }

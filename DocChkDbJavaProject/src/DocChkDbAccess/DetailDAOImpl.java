@@ -184,11 +184,11 @@ public class DetailDAOImpl implements DetailDAO {
 
 
     @Override
-    public ArrayList<Document_Detail> searchAuthor(String Dou_Author) {
+    public ArrayList<Document_Detail> searchAuthor(int Dou_Author) {
         try {
             String SQL="Select * From Document_Detail Where Dou_Author = ?";
             PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement( SQL );
-            pstmt.setString(1, Dou_Author);
+            pstmt.setInt(1, Dou_Author);
             ResultSet rs = pstmt.executeQuery();
             ArrayList<Document_Detail> result = new ArrayList<Document_Detail>();
             while ( rs.next() )
@@ -210,11 +210,11 @@ public class DetailDAOImpl implements DetailDAO {
     }
 
     @Override
-    public ArrayList<Document_Detail> searchDraftByAuthor(String Dou_Author) {
+    public ArrayList<Document_Detail> searchDraftByAuthor(int Dou_Author) {
         try {
             String SQL="Select * From Document_Detail Where Dou_Draft=1 and  Dou_Author = ?";
             PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement( SQL );
-            pstmt.setString(1, Dou_Author);
+            pstmt.setInt(1, Dou_Author);
             ResultSet rs = pstmt.executeQuery();
             ArrayList<Document_Detail> result = new ArrayList<Document_Detail>();
             while ( rs.next() )
@@ -238,11 +238,11 @@ public class DetailDAOImpl implements DetailDAO {
 
 
     @Override
-    public ArrayList<Document_Detail> searchNoDraftByAuthor(String Dou_Author) {
+    public ArrayList<Document_Detail> searchNoDraftByAuthor(int Dou_Author) {
         try {
             String SQL="Select * From Document_Detail Where Dou_Draft=0 and Dou_Author = ?";
             PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement( SQL );
-            pstmt.setString(1, Dou_Author);
+            pstmt.setInt(1, Dou_Author);
             ResultSet rs = pstmt.executeQuery();
             ArrayList<Document_Detail> result = new ArrayList<Document_Detail>();
             while ( rs.next() )
