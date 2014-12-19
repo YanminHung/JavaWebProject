@@ -33,28 +33,28 @@ if(!isMultipart){
     return;
 }
 
-/* 網頁專案路徑 */
-String ProjectPath = "I:\\JavaProject\\DocChkSystemWeb\\WebContent";
+/* Project Location */
+String ProjectPath = "C:\\java\\Git\\JavaWebProject\\DocChkSystemWeb\\WebContent";
 
-/* 上傳資料夾 */
+/* File Upload Location */
 String savePath = "\\uploads";
 
 String uploadPath = System.getProperty("os.name").matches("Windows.*") ?
                     ProjectPath + savePath :
                     "/tmp/uploads/";
 
-/* 檢查資料夾是否存在，否則建立 */
+/* Check Dir exists */
 File saveDir = new File(uploadPath);    
 if(!saveDir.exists()){
   saveDir.mkdir();
 }
 
-/* 員工編號 */
+/* Presonnel folder */
 String EmpIdPath = "\\QQQQQ";
 
 uploadPath += EmpIdPath;
 
-/* 檢查資料夾是否存在，否則建立 */
+/* Check Dir exists */
 saveDir = new File(uploadPath);    
 if(!saveDir.exists()){
   saveDir.mkdir();
@@ -68,7 +68,7 @@ String dts=sdf.format(dt);
 dts = "\\" + dts;
 uploadPath += dts;
 
-/* 檢查資料夾是否存在，否則建立 */
+/* Save Folder */
 saveDir = new File(uploadPath);    
 if(!saveDir.exists()){
   saveDir.mkdir();
@@ -87,7 +87,7 @@ while (iter.hasNext()) {
         
         String subfileName = item.getName().substring( item.getName().lastIndexOf('.') );
         
-        /* 檔名為申請編號 */
+        /* Use Document Temp No */
         String fileName = "GGG" + subfileName;
         
         String uploadedFile = uploadPath + "\\" + basenamePattern.matcher(fileName).replaceFirst("");
@@ -104,9 +104,8 @@ while (iter.hasNext()) {
     }
 }
 
-/* 產生簽核進度資料 */
-// 文件Detail PK值
-
+/* Check Flow */
+// Use Detail PK
 int DocTmpId = 1;
 String Dou_FlowType = request.getParameter("Dou_FlowType");
 
@@ -121,7 +120,7 @@ int index = 0;
 
 for( Document_FlowSeq o : flowDetail )
 {
-    // 設定第一筆簽核狀態為Enable
+    // First record need set Enable
     docProcess.add( new DocProcess( DocTmpId,
                                     o.getFlowType(),
                                     o.getFlowSeq(),
