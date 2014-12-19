@@ -232,7 +232,7 @@ a{
 </form>
 </div>
 	<div id="slidingDiv" name="slidingDiv">
-		<iframe name="s" width="100%" height="250" src="doc_process.jsp" frameborder="0" scrolling="no"></iframe>
+		<iframe name="s" width="100%" height="250" src="doc_processDetail.jsp" frameborder="0" scrolling="no"></iframe>
 	</div>
 </div>
 </body>
