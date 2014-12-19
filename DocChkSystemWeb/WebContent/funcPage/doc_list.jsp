@@ -83,7 +83,7 @@ tr{
 %>
 <div id="table-warp">
     <form action="" method="post">
-    <div class="title">新增文件</div>
+    <div class="title">文件詳細內容</div>
     <div class="table-body">
         <table id="table-b">
             <tbody>

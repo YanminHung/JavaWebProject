@@ -88,7 +88,7 @@ function changeSubBrowse( str )
 						<li><a href="funcPage/addNewDoc.jsp" target="subBrowse" >新增文件</a></li>
 						<li><a href="funcPage/doc_process.jsp" target="subBrowse">進度查詢</a></li>
 						<li><a href="funcPage/doc_draft.jsp" target="subBrowse">草稿夾</a></li>
-						<li><a href="funcPage/doc_history.jsp" target="subBrowse" >歷史進度</a></li>
+						<li><a href="funcPage/doc_history.jsp" target="subBrowse" >歷史查詢</a></li>
 	                </ul>
 	            </div>
 	        <div class="menu">請假單</div>
@@ -97,7 +97,7 @@ function changeSubBrowse( str )
 						<li><a href="#">新增文件</a></li>
 						<li><a href="#">進度查詢</a></li>
 						<li><a href="#">草稿夾</a></li>
-						<li><a href="#">歷史進度</a></li>
+						<li><a href="#">歷史查詢</a></li>
 	                </ul>
 	            </div>
 	        <div class="menu">請購單</div>

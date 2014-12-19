@@ -33,6 +33,10 @@ if( submit != null )
 	{
 	    impl.AddCheckD( docDetail.getDou_No() );
 	    impl.updateCheckFlag( docDetail.getDou_No() );
+	    
+	    
+	    
+	    
 	}
 	else if( submit.equals("退回") )
 	{

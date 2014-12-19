@@ -86,7 +86,7 @@ import java.util.ArrayList;
 		{
             try {
                 String SQL ="Update  Document_Process Set Proc_BreakOff=1,Proc_CheckD=SYSDATETIME()"
-                        +"where Proc_Id =?";
+                        +"where Proc_TmpNo =? ";
                 PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                 pstmt.setInt(1, Proc_Id);
                 pstmt.executeUpdate();
@@ -144,6 +144,32 @@ import java.util.ArrayList;
 		    return 0;
 		}
 
+		 /**
+         * 搜尋簽核完成傳值1
+         */
+		@Override
+		public int checkIsFinish(int Proc_TmpNo)
+		{
+            try {
+                String SQL ="Select * From Document_Process Where Proc_CheckFlag=1 "+                		
+    	                "and Proc_Flow_Max=Proc_Flow_Seq and  Proc_CheckD is not null and Proc_TmpNo =?";  
+                PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
+                pstmt.setInt(1, Proc_TmpNo);
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next())
+                {
+                    System.out.println("OK");
+                    return 1;
+                }
+                pstmt.close();               
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }       
+
+		    return 0;
+		}
+		
 		 /**
          * 搜尋簽核者代號後，帶出待核簽資料
          */
