@@ -17,4 +17,9 @@ public interface DetailDAO {
     public ArrayList<Document_Detail> searchNoDraftByAuthor(int Author);
     public ArrayList<Document_Detail> searchData(String Date);
 
+    /**
+     * @param   Emp_No=Dou_Author
+     * @return  ArrayList<Document_Detail>
+     */
+    public ArrayList<Document_Detail> findByAuthor(int Emp_No);
 }

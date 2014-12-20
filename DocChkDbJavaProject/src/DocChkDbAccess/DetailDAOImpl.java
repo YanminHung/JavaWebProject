@@ -291,7 +291,34 @@ public class DetailDAOImpl implements DetailDAO {
         }
         return null;
     }
+    
+    /**
+     * @param   Emp_No=Dou_Author
+     * @return  ArrayList<Document_Detail>
+     */
+    public ArrayList<Document_Detail> findByAuthor(int Emp_No)
+    {
+        try{
+            String SQL="Select * From Document_Detail where Dou_Author=? And Dou_IsHistoryCheck=0 And Dou_Draft=0";
+            PreparedStatement pstmt=DocChkDbConn.GetConnect().prepareStatement( SQL );
+            pstmt.setInt(1, Emp_No);
+            ResultSet rs=pstmt.executeQuery();
+            ArrayList<Document_Detail> result = new ArrayList<Document_Detail>();
 
+            while(rs.next()){
+                result.add(new Document_Detail(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), 
+                        rs.getString(5),rs.getString(6), rs.getInt(7), rs.getString(8), rs.getInt(9),
+                        rs.getInt(10), rs.getInt(11), rs.getString(12), rs.getInt(13)));
 
-
+            }
+            pstmt.close();
+            return result;
+            
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+                    
+    }
 }

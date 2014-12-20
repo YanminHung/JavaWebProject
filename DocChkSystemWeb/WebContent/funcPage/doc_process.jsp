@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.ArrayList" %>
 <%
 String login = "";
 if (session.getAttribute("Login") != null )
@@ -13,6 +13,17 @@ if (!login.equals("Employee"))
 }
 %>
 <!DOCTYPE html>
+
+<% 
+    EmpolyeeDAOImpl impl = new EmpolyeeDAOImpl();
+    Empolyee Emp = (Empolyee)session.getAttribute("Empolyee");
+    //Emp.getNo();
+    DetailDAOImpl Doc = new DetailDAOImpl();
+    
+   ArrayList<Document_Detail> R = Doc.findByAuthor(Emp.getNo());
+   
+%>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,6 +39,10 @@ $(document).ready(function(){
 	});
 
 });
+function ShowPage( Proc_TmpNo )
+{
+    document.location.href="doc_processDetail.jsp?Proc_TmpNo=" + Proc_TmpNo ;
+}
 </script>
 <style>
 *{
@@ -152,77 +167,33 @@ a{
         <table id="table-b">
             <tbody>
                 <!--更改下面-->
+                 <%
+                //DocProcessDAODBImpl DocPrc=new DocProcessDAODBImpl();
+                //Docprc.findByProc_TmpNo(Doc.getDou_No())
+                //String TitleStr;
+                
+                for(int i=0 ; i<R.size() ; i++) 
+                { 
+                    Document_Detail r = R.get(i);                   
+                    String funcStr = "\"ShowPage(" + r.getDou_Author() + ")\"";
+                    
+                    
+                %>
+                    <tr onclick=<%= funcStr %> >
+                
                 <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td><a class="show_hide" name="show_hide" href="#">普</a></td>
-                    <td><a class="show_hide" name="show_hide" href="#">普</a></td>
-                    <td><a class="show_hide" name="show_hide" href="#">測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</a></td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>
+                    <td><a class="show_hide" name="show_hide" href="#"><%out.print(r.getStatus());%></a></td>
+                    <td><a class="show_hide" name="show_hide" href="#">
+                    <%
+                    //SimpleDateFormat formatter;
+                    //formatter = new SimpleDateFormat ("yyyy-MM-dd");
+                    //String myDate = r.getDou_Date().substring(0,11);%>
+                    <%=r.getDou_Date().substring(0,11)%>
+                    </a></td>
+                    <td><a class="show_hide" name="show_hide" href="#"><%out.print(r.getDou_Keynote());%></a></td>
+                </tr>    
+                <% } %>
             </tbody>
         </table>
     </div>
