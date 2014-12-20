@@ -131,6 +131,14 @@ textarea{
 }
 </style>
 </head>
+
+<script type="text/javascript">    
+function opnefile( fileURL )
+{
+	window.open( "/DocChkSystemWeb" + fileURL, "文件內容", config="height=720,width=960" );
+}
+</script>
+
 <body>
 <div id="table-warp">
     <form action="DocCheck.jsp" method="post" >
@@ -209,7 +217,25 @@ textarea{
                 <tr>
                     <td align="center">附件</td>
                     <td colspan="3">
-                        <input type="file" name="Dou_Link" id="Dou_Link" class="file" >
+                        <!-- <input type="file" name="Dou_Link" id="Dou_Link" class="file" > -->
+                        <%
+                        if( !docDetail.getDou_Link().equals("0"))
+                        {
+                        	String fileUrl = "\"opnefile('" +
+                                             docDetail.getDou_Link() +
+                                             "')\"";
+						%>
+						<input name="file" id="file" type="button" value="開啟附件" onclick=<%=fileUrl %> >
+						<a href=<% out.print( "\"" + docDetail.getDou_Link() + "\"" ); %> > QQQ </a>
+						<%
+                        }
+                        else
+                        {
+						%>
+						無附件...
+						<%
+                        }
+						%>
                     </td>
                 </tr>
                 </tbody>

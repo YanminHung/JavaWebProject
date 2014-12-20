@@ -36,12 +36,15 @@
     d.setStatus(0);
     d.setDou_IsHistoryCheck(0);
     //d.setDou_Link(Dou_Link);
+    out.print( "<p> submit: " + request.getParameter("submit") + "</p>" );
     if(request.getParameter("submit").equals("發送"))
-    {    
+    {
+    	out.print( "<p> submit: GG </p>" );
     	d.setDou_Draft(0);
     }
-    if(request.getParameter("submit").equals("暫存"))
-    {    
+    else if(request.getParameter("submit").equals("暫存"))
+    {
+    	out.print( "<p> submit: PP </p>" );
     	d.setDou_Draft(1);
     }
     //DetailDAOImpl impl= new DetailDAOImpl();
@@ -82,11 +85,15 @@ if(!saveDir.exists()){
   saveDir.mkdir();
 }
 
+out.print( "<p>" + uploadPath + "</p>" ); 
+
 /* 員工編號 */
 String EmpIdPath = m.getId();  
 
 uploadPath += "\\";
 uploadPath += EmpIdPath;
+
+out.print( "<p>" + uploadPath + "</p>" ); 
 
 /* 檢查資料夾是否存在，否則建立 */
 saveDir = new File(uploadPath);    
@@ -130,7 +137,7 @@ while (iter.hasNext()) {
 
         request.setAttribute("msg", "Uploaded '" + fileName + "' to '" + uploadedFile);
         
-        DbFileLink = savePath + EmpIdPath + dts + "\\" + fileName;
+        DbFileLink = savePath + "\\" + EmpIdPath + dts + "\\" + fileName;
         
         DbFileLink = DbFileLink.replace( '\\', '/' );
         
@@ -167,7 +174,7 @@ for( Document_FlowSeq o : flowDetail )
                                     o.getFlowType(),
                                     o.getFlowSeq(),
                                     FlowMaxStep,
-                                    o.getFlowPosId(),//要改
+                                    new Document_PositionDAOImpl().getPosDataFromPosId( o.getFlowPosId() ).getEmpolyeeID(),
                                     ( index == 0) ? DocProcess.Enable : DocProcess.Disable ) );
     index++;
 }

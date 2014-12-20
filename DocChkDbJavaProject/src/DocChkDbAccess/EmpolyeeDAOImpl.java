@@ -282,7 +282,8 @@ public class EmpolyeeDAOImpl implements EmpolyeeDAO {
     @Override
     public String GetLoginPwd(String Emp_Id) {
         try {
-            String SQL="Select * From Empolyee where Emp_Id=? Collate Chinese_Taiwan_Stroke_CS_AS;";
+            String SQL="Select * From Empolyee where Emp_OutD is Null and Emp_Id=? " +
+                       "Collate Chinese_Taiwan_Stroke_CS_AS;";
             PreparedStatement pstmt=DocChkDbConn.GetConnect().prepareStatement( SQL );
             pstmt.setString(1, Emp_Id);
             ResultSet rs=pstmt.executeQuery();

@@ -125,7 +125,6 @@ textarea{
 function formSubmit( submitValue )
 {
     var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
-    alert("123");
     var Dou_Date = document.getElementById("Dou_Date").value;
     
     var Dou_Speed;
@@ -157,11 +156,11 @@ function formSubmit( submitValue )
                  "Dou_Content=" + Dou_Content + "&" +
                  "submit=" + submitValue;
     
-    alert( msgStr );
+//    alert( msgStr );
     
     document.form1.action="detailAdd.jsp?" + msgStr;
     
-    alert( document.form1.action );
+//    alert( document.form1.action );
     document.form1.submit();
 
 }
