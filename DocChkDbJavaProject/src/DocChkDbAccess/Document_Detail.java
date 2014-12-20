@@ -1,4 +1,12 @@
 package DocChkDbAccess;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+
+
 /**
  *
  * @author 彭治堯
@@ -29,7 +37,7 @@ public class Document_Detail {
      * @param Dou_Date      日期
      * @param Dou_Flow      簽核人員
      * @param Status        狀態
-     * @param Dou_IsHistory 是否點過  1:點過  0:沒點
+     * @param Dou_IsHistory 是否點過1:刪除    0:留存(正常狀態)
      * @param Dou_Link      附件
      */
 
@@ -181,8 +189,62 @@ public class Document_Detail {
         this.Dou_Draft = dou_Draft;
     }
 
+    /**
+     * 
+     * @param   Emp_No=Dou_Author
+     * @return  ArrayList<Document_Detail>
+     */
+    public ArrayList<Document_Detail> findByAuthor(int Emp_No)
+    {
+        try{
+            String SQL="Select * From Document_Detail where Dou_Author=? And Dou_IsHistoryCheck=0 And Dou_Draft=0";
+            PreparedStatement pstmt=DocChkDbConn.GetConnect().prepareStatement( SQL );
+            pstmt.setInt(1, Dou_Author);
+            ResultSet rs=pstmt.executeQuery();
+            ArrayList<Document_Detail> result = new ArrayList<Document_Detail>();
+
+            while(rs.next()){
+                result.add(new Document_Detail(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(4),
+                        rs.getString(5), rs.getInt(6), rs.getString(7), rs.getInt(8),
+                        rs.getInt(9), rs.getInt(10), rs.getString(11), rs.getInt(12)));
+
+            }
+            pstmt.close();
+            return result;
+            
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+                    
+    }
+
+    /*
+     * public Empolyee findByNo(int Emp_No) {
+        try {
+            String SQL="Select * From Empolyee where Emp_No=? ;";
+            PreparedStatement pstmt=DocChkDbConn.GetConnect().prepareStatement( SQL );
+            pstmt.setInt(1, Emp_No);
+            ResultSet rs=pstmt.executeQuery();
+            if (rs.next()){
+                Empolyee r = new Empolyee(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
+                        rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getString(10),
+                        rs.getString(11),rs.getString(12),rs.getString(13),rs.getInt(14));
+                pstmt.close();
+                return r;
 
 
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+     */
     /**
      * 以下 Method 都是 Getter 直接取得  ， 因為用 Private 保護
      *
