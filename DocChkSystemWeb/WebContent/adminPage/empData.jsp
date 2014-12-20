@@ -51,7 +51,7 @@ if (!login.equals("administrator"))
 	}
 .table-body{
 	width:100%; 
-	height:500px;
+	height:100%;
 	overflow-y:scroll;
 	text-align:left;
     background:#e9e9e9;
@@ -163,7 +163,7 @@ td a:hover{
 				<th id="Name">姓名</th>
 				<th id="InD">到職日</th>
 				<th id="Depart">Depart</th>
-				<th id="Title">職階</th>
+				<!-- <th id="Title">職階</th>  -->
 				<th id="BossPosId">直屬主管</th>
 	        </thead>
 	    </table>
@@ -172,23 +172,29 @@ td a:hover{
 	    <table id="table-b">
 	        <tbody>
 	            <!--更改下面-->
-	            <% 
+	            <%
+	            Document_PositionDAOImpl Posimpl=new Document_PositionDAOImpl();
+	            
+	            String TitleStr;
+	            
 	            for(int i=0 ; i<R.size() ; i++) 
 	            { 
 	            	Empolyee r = R.get(i);  
 	            	
 	            	String funcStr = "\"ShowPage(" + r.getNo() + ")\"";
+	            	
+	            	TitleStr = Posimpl.getPosDataFromPosId( r.getBossPosId() ).getPosTitle();
 	            %>
 	            	<tr onclick=<%= funcStr %> >
 						<td headers="Id"><% out.print(r.getId()); %></td>
 						<td headers="Name"><% out.print(r.getName()); %></td>
 						<td headers="InD"><% out.print(r.getInD()); %></td>
 						<td headers="Depart"><% out.print(r.getDepart()); %></td>
-						<td headers="Title"><% out.print(r.getTitle()); %></td>
-						<td headers="BossPosId"><% out.print(r.getBossPosId()); %></td>
+						<!-- <td headers="Title"><% out.print(r.getTitle()); %></td> -->
+						<td headers="BossPosId"><% out.print(TitleStr); %></td>
 	            	</tr>
 	            <% } %>
-	        </tbody>
+	        </tbody> 
 	    </table>
     </div>
 	    <div id="delete" align="left">

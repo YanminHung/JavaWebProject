@@ -57,7 +57,7 @@ if (!login.equals("administrator"))
 	}
 .table-body{
 	width:100%; 
-	height:235px;
+	height:350px;
     font-family: 微軟正黑體;
     font-size: 16px;
 	}
@@ -98,22 +98,18 @@ if (!login.equals("administrator"))
 	border: 0px;
     padding: 6px;
 	}
-.table-body table tr:nth-child(2n+1){
-    background-color:#f6f6f6;
-    }
 .tdselect{
 	text-align: left;
 }
-#Update{
-    text-align: center;
-    background:#0dadb7;
-    padding: 6px;
+#delete{
+	text-align: center;
+	padding: 6px;
 }
 a{
 	text-decoration: none;
 	color:white;
-	display:block;
-
+	display: inline-block;
+}
 </style>
 </head>
 

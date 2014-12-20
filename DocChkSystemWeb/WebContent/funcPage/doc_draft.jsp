@@ -38,7 +38,7 @@ function checkAll(eventInfo) {
 <script type="text/javascript">    
     function ShowPage( Dou_No )
     {
-        document.location.href="doc_draftEdit.jsp?Dou_No=" + Dou_No;
+        document.location.href="doc_draftEditUi.jsp?Dou_No=" + Dou_No;
     }
 
 </script> 
@@ -135,11 +135,12 @@ td a:hover{
 </style>
 </head>
 <body>
-<%
+<%             
 request.setCharacterEncoding("utf-8");
 Empolyee m =( Empolyee) session.getAttribute("Empolyee");    
 DetailDAOImpl  impl = new DetailDAOImpl();
-ArrayList<Document_Detail> r1  = impl.searchDraftByAuthor(m.getId());
+ArrayList<Document_Detail> r1  = impl.searchDraftByAuthor(m.getNo());
+
 
 
 %>
@@ -165,6 +166,7 @@ ArrayList<Document_Detail> r1  = impl.searchDraftByAuthor(m.getId());
                              for( Document_Detail o : r1 )
                              {    
                                  String funcStr = "\"ShowPage(" +o.getDou_No()+ ")\"";
+                                 
                         %>
                             <tr>
                             <td><input type="checkbox" name="chkboxflag" id="chkboxflag" value=<%=o.getDou_No()%> /></td> 
@@ -176,7 +178,7 @@ ArrayList<Document_Detail> r1  = impl.searchDraftByAuthor(m.getId());
                         else
                             {
                             %>
-                            <tr><td colspan="2" >無歷史資料</td></tr> 
+                            <tr><td colspan="2" >無草稿資料</td></tr> 
                             <%
                             }
                        %>
