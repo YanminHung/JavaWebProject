@@ -215,4 +215,38 @@ import java.util.ArrayList;
 			// TODO Auto-generated method stub
 			return null;
 		}
+		
+		@Override
+		public ArrayList<DocProcess> findByDocDetailPk(int Proc_TmpNo) {
+			try {
+             	String SQL="Select * From Document_Process Where Proc_TmpNo=?";
+                PreparedStatement pstmt =DocChkDbConn.GetConnect().prepareStatement(SQL);
+         	    pstmt.setInt(1,Proc_TmpNo);
+         	   	 /* 執行SQL語句 ，查詢類使用Query*/
+                ResultSet rs = pstmt.executeQuery();
+         	     /* 建立Array List並將資料放入 */
+                ArrayList<DocProcess> result = new ArrayList<DocProcess>();
+                while ( rs.next() )
+                {
+                    result.add( new DocProcess( rs.getInt(2),
+                                                rs.getInt(3),
+                                                rs.getInt(4),
+                                                rs.getInt(5),
+                                                rs.getInt(6),
+                                                rs.getString(7),
+                                                rs.getInt(8),
+                                                rs.getInt(9) ));
+                //    System.out.println( rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getInt(3)+""+" "+rs.getInt(4)+"");
+                }
+                pstmt.close();
+                return result;
+
+
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+		return null;
+		}
 }

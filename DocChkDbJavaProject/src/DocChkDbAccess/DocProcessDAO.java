@@ -16,7 +16,14 @@ public interface DocProcessDAO {
 	public int checkIsFinish(int Proc_TmpNo); //check簽核完成回傳值1
 	int AddCheckD(int Proc_Id); // 帶入系統日期
 	ArrayList<DocProcess> findByReadyCheck(int Proc_Emp_Id); //選取條件login ID及CheckFlag為1(待審)
-	ArrayList<DocProcess> getAll();	
+	ArrayList<DocProcess> getAll();
+
+	/**
+	 * 依據文件Detail流水號取得該文件簽核紀錄
+	 * @param Proc_TmpNo
+	 * @return DocProcess List
+	 */
+	ArrayList<DocProcess> findByDocDetailPk( int Proc_TmpNo );
 	
 	
 }
