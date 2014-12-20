@@ -125,7 +125,7 @@ textarea{
 function formSubmit( submitValue )
 {
     var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
-    
+    alert("123");
     var Dou_Date = document.getElementById("Dou_Date").value;
     
     var Dou_Speed;
@@ -159,7 +159,9 @@ function formSubmit( submitValue )
     
     alert( msgStr );
     
-    document.form1.action="uploadcode.jsp?" + msgStr;
+    document.form1.action="detailAdd.jsp?" + msgStr;
+    
+    alert( document.form1.action );
     document.form1.submit();
 
 }
@@ -168,12 +170,12 @@ function formSubmit( submitValue )
 </head>
 <body>
 <div id="table-warp">
-    <form action="detailAdd.jsp" method="post" >
+    <form name = "form1" id = "form1" action="detailAdd.jsp" method="post" enctype="multipart/form-data">
     <!-- 隱藏 下列 直接預設，name直接抓取 Empolyee -->
     <input name="name" id="name" type="hidden" value=<%out.print(m.getNo()); %>>
     <input name="Status" id="Status" type="hidden" value=0>
     <input name="Dou_IsHistoryCheck" id="Dou_IsHistoryCheck" type="hidden" value=0>
-    <input name="Dou_Link" id="Dou_Link" type="hidden" value=<%out.print(0); %>>
+    
     <input name="Dou_Draft" id="Dou_Draft" type="hidden" value=0>
         <div class="title">新增文件</div>
         <div class="table-body">
@@ -182,9 +184,9 @@ function formSubmit( submitValue )
                 <!--更改下面-->
                 <tr>
                     <td width="150" align="center">申請編號</td>
-                    <td><input type="text" name="Dou_TmpNo" value="<% out.print(m.getId() + dts); %>"></td>
+                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo" value="<% out.print(m.getId() + dts); %>"></td>
                     <td width="150" align="center">發文日期</td>
-                    <td><input type="text" name="Dou_Date" value="<% out.print(dts2); %>"></td>
+                    <td><input type="text" id="Dou_Date" name="Dou_Date" value="<% out.print(dts2); %>"></td>
                 </tr>
           
                 <tr>
