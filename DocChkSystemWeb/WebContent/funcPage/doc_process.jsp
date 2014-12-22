@@ -19,8 +19,7 @@ if (!login.equals("Employee"))
     Empolyee Emp = (Empolyee)session.getAttribute("Empolyee");
     //Emp.getNo();
     DetailDAOImpl Doc = new DetailDAOImpl();
-    
-   ArrayList<Document_Detail> R = Doc.findByAuthor(Emp.getNo());
+    ArrayList<Document_Detail> R = Doc.findByAuthor(Emp.getNo());
    
 %>
 
@@ -38,9 +37,12 @@ $(document).ready(function(){
 	$(".slidingDiv").slideToggle();
 	});
 });
-function ShowPage( Proc_TmpNo )
+function ifram_change( Proc_TempNo )
 {
-    document.location.href="doc_processDetail.jsp?Proc_TmpNo=" + Proc_TmpNo ;
+	var iframeElement = document.getElementById("sub");
+    iframeElement.src = "doc_processDetail.jsp?Proc_TempNo=" + Proc_TempNo  ;
+	
+	//document.location.href="doc_processDetail.jsp?Proc_TempNo=" + Proc_TempNo  ;
 }
 </script>
 <style>
@@ -175,22 +177,22 @@ a{
                 for(int i=0 ; i<R.size() ; i++) 
                 { 
                     Document_Detail r = R.get(i);                   
-                    String funcStr = "\"ShowPage(" + r.getDou_Author() + ")\"";
+                    String funcStr = "\"ifram_change(" + r.getDou_No() +  ")\"";
                     
                     
                 %>
                     <tr onclick=<%= funcStr %> >
                 
-                <tr>
                     <td><input type="checkbox" name="select" id="select" /></td>
-                    <td><a class="show_hide" name="show_hide" href="#"><%out.print(r.getStatus());%></a></td>
-                    <td><a class="show_hide" name="show_hide" href="#">
-                    <%
-                    //SimpleDateFormat formatter;
-                    //formatter = new SimpleDateFormat ("yyyy-MM-dd");
-                    //String myDate = r.getDou_Date().substring(0,11);%>
-                    <%=r.getDou_Date().substring(0,11)%>
-                    </a></td>
+                    <td><a class="show_hide" name="show_hide" href="#"><%
+                    int Proc_BO = r.getStatus();
+                    String status = "";
+                    if(Proc_BO==0){status="未審核";}
+                    if(Proc_BO==1){status="已審核";}
+                    if(Proc_BO==2){status="退件";}
+                    out.print(status);
+                    %></a></td>
+                    <td><a class="show_hide" name="show_hide" href="#"><%=r.getDou_Date().substring(0,11)%></a></td>
                     <td><a class="show_hide" name="show_hide" href="#"><%out.print(r.getDou_Keynote());%></a></td>
                 </tr>    
                 <% } %>
@@ -203,7 +205,7 @@ a{
 </form>
 </div>
 	<div class="slidingDiv" name="slidingDiv">
-		<iframe name="s" width="100%" height="250" src="doc_processDetail.jsp" frameborder="0" scrolling="no"></iframe>
+		<iframe name="sub" id="sub" width="100%" height="250" src="doc_processDetail.jsp" frameborder="0" scrolling="no"></iframe>
 	</div>
 </div>
 </body>

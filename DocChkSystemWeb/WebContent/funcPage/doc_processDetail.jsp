@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.ArrayList"%>
 <%
 String login = "";
 if (session.getAttribute("Login") != null )
@@ -12,6 +12,16 @@ if (!login.equals("Employee"))
     response.sendRedirect("../login.jsp");
 }
 %>
+
+<%
+String TempNo = request.getParameter("Proc_TempNo");
+//findByDocDetailPk
+int TmpNo = Integer.valueOf(TempNo);
+DocProcessDAODBImpl impl = new DocProcessDAODBImpl();
+ArrayList<DocProcess> rs = impl.findByDocDetailPk(TmpNo);
+EmpolyeeDAOImpl implEmp = new EmpolyeeDAOImpl();
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,10 +127,25 @@ if (!login.equals("Employee"))
             <tbody>
                 <!--更改下面-->
                 <tr>
-                    <td>普</td>
-                    <td>普普普普</td>
-                    <td>普</td>
-                    <td>1999-07-07</td>
+                	<% for (DocProcess o:rs ){ %>
+                    <td><% out.print(o.getProc_TmpNo());%></td>
+                    <td>
+                    <% 
+                    int No = o.getProc_Emp_Id();
+                    Empolyee m = implEmp.findByNo(No);
+                    out.print(m.getId());
+                    %></td>
+                    <td>
+                    <% 
+                    int Proc_BO = o.getProc_BreakOff();
+                    String status="";
+                    if(Proc_BO==0){status="未審核";}
+                    if(Proc_BO==1){status="已審核";}
+                    if(Proc_BO==2){status="退件";}
+                    out.print(status);
+                    %></td>
+                    <td><% out.print(o.getProc_CheckD());%></td>
+                    <% } %>
                 </tr>
             </tbody>
         </table>
