@@ -117,18 +117,11 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 				%>
 		   		<tr>
                     <td>查詢編號:<%out.print(r[i].getLib_DocNo()); %></td>
-                </tr>
-                <tr>
                     <td>文件類型:<%out.print(r[i].getDou_Type()); %></td>
-                </tr>
-                <tr>
                     <td>開始日期:<%out.print(r[i].getDou_Date()); %></td>
-                </tr>
-                <tr>
+                    <td>承辦人</td>
                     <td>部門:<%out.print(r[i].getEmp_Depart()); %></td>
                 </tr>
-                <tr><td><% out.print("----------------------------------------------------"); %></td></tr>
-                <tr>
 				<% } %>
             </tbody>
         </table>

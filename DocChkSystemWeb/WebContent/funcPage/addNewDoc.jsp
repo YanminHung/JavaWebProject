@@ -241,7 +241,7 @@ function formSubmit( submitValue )
                 <tr>
                     <td align="center">附件</td>
                     <td colspan="3">
-                        <input type="file" name="Dou_Link" id="Dou_Link" class="file" >
+                        <input type="file" name="Dou_Link" id="Dou_Link" class="file">
                     </td>
                 </tr>
                 </tbody>

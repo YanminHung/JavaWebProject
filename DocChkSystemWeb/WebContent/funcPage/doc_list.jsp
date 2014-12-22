@@ -18,6 +18,7 @@ if (!login.equals("Employee"))
     <meta charset="UTF-8">
     <title>文件簽核系統-文件查詢</title>
     <script type="text/javascript" src="js/minwt.auto_full_height.mini.js"></script>
+    <link rel="stylesheet" href="../css/buttons_small.css"> 
 <style>
 *{
     margin:0px;;
@@ -61,10 +62,9 @@ if (!login.equals("Employee"))
     }
 table{
     border-collapse: collapse;
-
 }
-table,tr,td{
-    border: 1px solid #C6C9CA;
+tr{
+	border:3px solid white;
 }
 tr{
     background: white;
@@ -72,16 +72,23 @@ tr{
 .text-top{
     vertical-align:text-top;
     }
+.content{
+	margin:3px;
+	width:638px;
+	height:160px;
+	border:1px solid #9c9d9d;
+	border-radius: 6px;
+	padding:3px;
+	background:white;
+}
 </style>
 </head>
-
 <script type="text/javascript">    
 function opnefile( fileURL )
 {
     window.open( fileURL, "文件內容", config="height=720,width=960" );
 }
 </script>
-
 <body>
 <%
     int Dou_TmpId = Integer.valueOf(request.getParameter("Lib_TmpId"));
@@ -115,7 +122,6 @@ function opnefile( fileURL )
             <% //out.print(r.getDou_Speed()); %>
             </td>
              -->
-             <td width="150" align="center">件速</td>
              <td>
                  <input type="radio" name="Dou_Speed" disabled="disabled" value=0 <% if( r.getDou_Speed() == 0 ) out.print("checked"); %> >急件
                  <input type="radio" name="Dou_Speed" disabled="disabled" value=1 <% if( r.getDou_Speed() == 1 ) out.print("checked"); %> >普件
@@ -127,13 +133,13 @@ function opnefile( fileURL )
           <tr>
             <td align="center" width="150">主旨</td>
             <td colspan="3" class="text-top" width="650">
-             <% out.print(r.getDou_Keynote());%>
+             <div class="content"><% out.print(r.getDou_Keynote());%></div>
             </td>
           </tr>
           <tr>
             <td align="center" width="150">說明</td>
             <td colspan="3" class="text-top" width="650">
-            <% out.print(r.getDou_Content());%>
+            <div class="content"><% out.print(r.getDou_Content());%></div>
             </td>
           </tr>
           <tr>
@@ -147,7 +153,7 @@ function opnefile( fileURL )
                                      r.getDou_Link() +
                                      "')\"";
                 %>
-                <input name="file" id="file" type="button" value="開啟附件" onclick=<%=fileUrl %> >
+                <input name="file" id="file" type="button" value="開啟附件" class="button button-rounded button-flat-primary" onclick=<%=fileUrl %> >
                 <%
                 }
                 else

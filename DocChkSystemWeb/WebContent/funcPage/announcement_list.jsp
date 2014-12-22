@@ -63,8 +63,8 @@ table{
     border-collapse: collapse;
 
 }
-table,tr,td{
-    border: 1px solid #C6C9CA;
+tr{
+    border: 3px solid white;
 }
 tr{
     background: white;
@@ -72,6 +72,15 @@ tr{
 .text-top{
     vertical-align:text-top;
     }
+.content{
+	margin:3px;
+	width:638px;
+	height:160px;
+	background:white;
+	border:1px solid #9c9d9d;
+	border-radius: 6px;
+	padding:3px;
+}
 </style>
 </head>
 <body>
@@ -83,7 +92,7 @@ tr{
 %>
 <div id="table-warp">
     <form action="" method="post">
-    <div class="title">新增文件</div>
+    <div class="title">公告文件</div>
     <div class="table-body">
         <table id="table-b">
             <tbody>
@@ -108,19 +117,35 @@ tr{
           <tr>
             <td align="center" width="150">主旨</td>
             <td colspan="3" class="text-top" width="650">
-             <% out.print(r.getDou_Keynote());%>
+             <div class="content"><% out.print(r.getDou_Keynote());%></div>
             </td>
           </tr>
           <tr>
             <td align="center" width="150">說明</td>
             <td colspan="3" class="text-top" width="650">
-            <% out.print(r.getDou_Content());%>
+            <div class="content"><% out.print(r.getDou_Content());%></div>
             </td>
           </tr>
           <tr>
             <td align="center" width="150" height="40">附件</td>
             <td colspan="3"  width="650">
-                <input type="file" name="fileField" id="fileField" class="file" >
+                <%
+                if( !r.getDou_Link().equals("0"))
+                {
+                    String fileUrl = "\"opnefile('" +
+                                     r.getDou_Link() +
+                                     "')\"";
+                %>
+                <input name="file" id="file" type="button" value="開啟附件" class="button button-rounded button-flat-primary" onclick=<%=fileUrl %> >
+                <%
+                }
+                else
+                {
+                %>
+                                             無附件...
+                <%
+                }
+                %>
             </td>
           </tr>
         </tbody>

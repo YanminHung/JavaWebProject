@@ -30,13 +30,25 @@ if (!login.equals("Employee"))
     <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/input_button_g.css">
 <script type="text/javascript"> 
-$(document).ready(function(){
+$(document).ready(function(){  
+    $('.slidingDiv').hide();    
+    $("a.show_hide").bind('click', function() { 
+       if($("a.active").length) $("a.active").removeClass('active');
+       if($(".slidingDiv").is(":visible") == true) { $('.slidingDiv').slideUp(); } else {}
+       $(this).addClass('active');
+       $('.slidingDiv').slideToggle();
+    });
+   $("#close").click( function() {
+        $('.slidingDiv').slideUp();
+    });
+ });
+/*$(document).ready(function(){
     $(".slidingDiv").hide();
     $(".show_hide").show();
 	$('.show_hide').click(function(){
 	$(".slidingDiv").slideToggle();
 	});
-});
+});*/
 function ifram_change( Proc_TempNo )
 {
 	var iframeElement = document.getElementById("sub");
@@ -183,7 +195,7 @@ a{
                     <tr onclick=<%= funcStr %> >
                 
                     <td><input type="checkbox" name="chIsHis" id="chIsHis" value=<%=r.getDou_No()%>></td>
-                    <td><a class="show_hide" name="show_hide" href="#"><%
+                    <td><a class="show_hide active" name="show_hide" href="#"><%
                     int Proc_BO = r.getStatus();
                     String status = "";
                     if(Proc_BO==0){status="審核中";}
@@ -191,8 +203,8 @@ a{
                     if(Proc_BO==2){status="退件";}
                     out.print(status);
                     %></a></td>
-                    <td><a class="show_hide" name="show_hide" href="#"><%=r.getDou_Date().substring(0,11)%></a></td>
-                    <td><a class="show_hide" name="show_hide" href="#"><%out.print(r.getDou_Keynote());%></a></td>
+                    <td><a class="show_hide active" name="show_hide" href="#"><%=r.getDou_Date().substring(0,11)%></a></td>
+                    <td><a class="show_hide active" name="show_hide" href="#"><%out.print(r.getDou_Keynote());%></a></td>
                 </tr>    
                 <% } %>
             </tbody>

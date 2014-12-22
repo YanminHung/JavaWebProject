@@ -64,7 +64,7 @@ String Author = new EmpolyeeDAOImpl().findByNo( docDetail.getDou_Author() ).getN
     }
 .table-body{
     width:100%; 
-    height:560px;
+    height:548px;
     overflow-y:none;
     text-align:left;
     background:#e9e9e9;
