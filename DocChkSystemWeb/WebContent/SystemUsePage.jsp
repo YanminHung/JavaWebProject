@@ -89,26 +89,26 @@ function changeSubBrowse( str )
 	        </div>
         </div>
         <div class="nav">
-            <div class="menu">員工資料維護</div>
+            <div class="menu"><span class="icon-empData"></span>員工資料維護</div>
                 <div class="sub">
                     <ul>
                         <li><a href="adminPage/empData.jsp" target="subBrowse" >員工清單</a></li>
                     </ul>
                 </div>
-            <div class="menu">版面維護</div>
+            <div class="menu"><span class="icon-annpushup"></span>版面維護</div>
                 <div class="sub">
                     <ul>
                         <li><a href="adminPage/AnnPushUp.jsp" target="subBrowse">版面維護</a></li>
                     </ul>
                 </div>
-            <div class="menu">組織與流程</div>
+            <div class="menu"><span class="icon-flowPage"></span>組織與流程</div>
                 <div class="sub">
                     <ul>
                         <li><a href="adminPage/flowPage.jsp" target="subBrowse">簽核流程設定</a></li>
                         <li><a href="adminPage/positionData.jsp" target="subBrowse" >主管人員設定</a></li>
                     </ul>
                 </div>
-            <div class="menu">文件查詢</div>
+            <div class="menu"><span class="icon-search_2"></span>文件查詢</div>
                 <div class="sub">
                     <ul>
                         <li><a href="funcPage/search.jsp" target="subBrowse">文件查詢</a></li>
