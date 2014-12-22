@@ -12,7 +12,7 @@ public interface DocLibraryDAO {
 	 * 新增一筆
 	 * @param l 
 	 */
-    public void add(DocLibrary l);
+    public void add(DocLibrary l,int Dou_Type);
     /**
      * 新增多筆
      * @param l

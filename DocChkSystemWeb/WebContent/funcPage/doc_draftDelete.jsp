@@ -9,17 +9,15 @@
 </head>
 <body>
 <%
-  
- 
     String [] doudel = request.getParameterValues("chkboxflag");              
     DetailDAOImpl  impl = new DetailDAOImpl();
     if ( doudel != null )
     {    
-    for (String o: doudel)
-       {
-        //out.print("Dou_NO:"+Integer.valueOf(o));
-        impl.updateDraftFlag(Integer.valueOf(o));    
-       }
+        for (String o: doudel)
+        {
+            //out.print("Dou_NO:"+Integer.valueOf(o));
+            impl.updateDraftFlag(Integer.valueOf(o));    
+        }
     }
     response.sendRedirect("doc_draft.jsp");
 %>
