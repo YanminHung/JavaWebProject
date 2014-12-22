@@ -137,7 +137,7 @@ while (iter.hasNext()) {
 
         request.setAttribute("msg", "Uploaded '" + fileName + "' to '" + uploadedFile);
         
-        DbFileLink = savePath + "\\" + EmpIdPath + dts + "\\" + fileName;
+        DbFileLink = "\\DocChkSystemWeb" + savePath + "\\" + EmpIdPath + dts + "\\" + fileName;
         
         DbFileLink = DbFileLink.replace( '\\', '/' );
         
