@@ -32,12 +32,11 @@ if (!login.equals("Employee"))
     <link rel="stylesheet" href="../css/input_button_g.css">
 <script type="text/javascript"> 
 $(document).ready(function(){
-    $("#slidingDiv").hide();
+    $(".slidingDiv").hide();
     $(".show_hide").show();
 	$('.show_hide').click(function(){
-	$("#slidingDiv").slideToggle();
+	$(".slidingDiv").slideToggle();
 	});
-
 });
 function ShowPage( Proc_TmpNo )
 {
@@ -126,12 +125,13 @@ function ShowPage( Proc_TmpNo )
 }
 #top{
 	width: 800px;
+	height:auto !important;
 	height: 257px;
+	max-height:257px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.2);	
 	position: relative;
 }
-#slidingDiv{
-	
+.slidingDiv{
 	position:relative;
 	top:10px;
 }
@@ -202,7 +202,7 @@ a{
         </div>
 </form>
 </div>
-	<div id="slidingDiv" name="slidingDiv">
+	<div class="slidingDiv" name="slidingDiv">
 		<iframe name="s" width="100%" height="250" src="doc_processDetail.jsp" frameborder="0" scrolling="no"></iframe>
 	</div>
 </div>
