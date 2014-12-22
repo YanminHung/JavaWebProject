@@ -57,8 +57,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     padding: 6px;
 }
 .table-head{
-    padding-right:17px;
-    background:#3b3b3b;
+    background:#0dadb7;
     color:white;
     font-family: 微軟正黑體;
     text-align:left;
@@ -77,22 +76,50 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 .table-head table,.table-body table{
     width:100%;
     }
+.table-head th:first-of-type,.table-body td:first-of-type{
+    width:80px;
+}
+.table-head th:nth-child(2),.table-body td:nth-child(2)
+{
+    width:80px;
+}
+.table-head th:nth-child(3),.table-body td:nth-child(3)
+{
+    width:150px;
+}
+.table-head th:nth-child(4),.table-body td:nth-child(4)
+{
+    width:80px;
+}
+.table-head th:nth-child(5),.table-body td:nth-child(5)
+{
+    width:80px;
+}
+.table-head th:last-of-type,.table-body td:last-of-type
+{
+    width:330px;
+}
 .table-body table tr:nth-child(2n+1){
     background-color:#f6f6f6;
     }
 #table-b{
     border-collapse:collapse;
-     border: 0px;
+    border: 0px;
+    table-layout: fixed;  
     }
 #table-h,tr,th{
     border-collapse:collapse;
     border: 0px;
-    padding: 6.5px;
+    padding: 6px 5px 6px 7px;
     }
 #table-b,tr,td{
     border-collapse:collapse;
     border: 0px;
-    padding: 6px;
+    padding: 6px 1px 6px 6px;
+    text-overflow:ellipsis;
+    -moz-text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow-x:hidden;
     }
 </style>
 </head>
@@ -104,7 +131,14 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
         <div class="title">查詢結果</div>
         <table id="table-h">
             <thead>
-
+				<tr>
+					<th>查詢編號</th>
+					<th>文件類型</th>
+					<th>開始日期</th>
+					<th>承辦人</th>
+					<th>部門</th>
+					<th>主旨</th>
+				</tr>
             </thead>
         </table>
     </div>
@@ -116,11 +150,12 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 				{ 
 				%>
 		   		<tr>
-                    <td>查詢編號:<%out.print(r[i].getLib_DocNo()); %></td>
-                    <td>文件類型:<%out.print(r[i].getDou_Type()); %></td>
-                    <td>開始日期:<%out.print(r[i].getDou_Date()); %></td>
+                    <td><%out.print(r[i].getLib_DocNo()); %></td>
+                    <td><%out.print(r[i].getDou_Type()); %></td>
+                    <td><%out.print(r[i].getDou_Date()); %></td>
                     <td>承辦人</td>
                     <td>部門:<%out.print(r[i].getEmp_Depart()); %></td>
+                    <td>主旨</td>
                 </tr>
 				<% } %>
             </tbody>

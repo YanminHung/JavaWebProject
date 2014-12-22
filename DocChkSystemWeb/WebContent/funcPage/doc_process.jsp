@@ -158,6 +158,38 @@ a{
 	color:black;
 	display: block;
 }
+.icon-back_1{/*退回*/
+	color:#d81e06;
+	font-size: 22px;
+}
+.icon-pendover_1{/*審核完*/
+	color:#0e932e;
+	font-size: 22px;
+}
+.icon-pend_1{/*未審核*/
+	color:#33475f;
+	font-size: 22px;
+}
+.icon-pending_1{/*審核中*/
+	color:#ea8010;
+	font-size: 22px;
+}
+.icon-back_2{/*退回*/
+	color:#d81e06;
+	font-size: 22px;
+}
+.icon-pendover_2{/*審核完*/
+	color:#0e932e;
+	font-size: 22px;
+}
+.icon-pend_2{/*未審核*/
+	color:#33475f;
+	font-size: 22px;
+}
+.icon-pending_2{/*審核中*/
+	color:#ea8010;
+	font-size: 22px;
+}
 </style>
 </head>
 <body>

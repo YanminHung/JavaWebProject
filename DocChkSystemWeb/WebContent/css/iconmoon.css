@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?-wjgvg9');
-	src:url('../fonts/icomoon.eot?#iefix-wjgvg9') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?-wjgvg9') format('woff'),
-		url('../fonts/icomoon.ttf?-wjgvg9') format('truetype'),
-		url('../fonts/icomoon.svg?-wjgvg9#icomoon') format('svg');
+	src:url('../fonts/icomoon.eot?bq8cd9');
+	src:url('../fonts/icomoon.eot?#iefixbq8cd9') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?bq8cd9') format('woff'),
+		url('../fonts/icomoon.ttf?bq8cd9') format('truetype'),
+		url('../fonts/icomoon.svg?bq8cd9#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -21,6 +21,30 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-pendover_2:before {
+	content: "\e614";
+}
+.icon-pend_2:before {
+	content: "\e615";
+}
+.icon-back_2:before {
+	content: "\e616";
+}
+.icon-pending_2:before {
+	content: "\e617";
+}
+.icon-back_1:before {
+	content: "\e610";
+}
+.icon-pendover_1:before {
+	content: "\e611";
+}
+.icon-pend_1:before {
+	content: "\e612";
+}
+.icon-pending_1:before {
+	content: "\e613";
+}
 .icon-face:before {
 	content: "\e60f";
 }

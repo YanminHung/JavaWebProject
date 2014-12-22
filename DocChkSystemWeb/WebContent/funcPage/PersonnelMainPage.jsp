@@ -125,6 +125,7 @@ td a:hover{
 	-webkit-text-stroke-width: 0.2px;
 	color:#ea8010;
 	font-size:18px;
+	padding-right:6px;
 }   
 </style>
 </head>
