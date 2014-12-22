@@ -44,7 +44,8 @@ if( submit != null )
 	    		topflag=1;
 	    	}
 	    	//out.print(docDetail.getDou_No());
-	    	libimpl.add(new DocLibrary(docDetail.getDou_No(),topflag))	;	
+	    	libimpl.add(new DocLibrary(docDetail.getDou_No(),topflag),
+	    	            docDetail.getDou_Type());	
 	    	docimpl.updateStatusFlag(docDetail.getDou_No(), 1);
 	    } 
     }
