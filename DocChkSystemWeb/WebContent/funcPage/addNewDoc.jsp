@@ -141,7 +141,7 @@ function formSubmit( submitValue )
     var site = document.all.Dou_FlowType.selectedIndex; 
     var Dou_FlowType = document.all.Dou_FlowType.options[site].value;
     
-    sit = document.all.Dou_Type.selectedIndex; 
+    site = document.all.Dou_Type.selectedIndex; 
     var Dou_Type = document.all.Dou_Type.options[site].value;
     
     var Dou_Keynote = document.all.Dou_Keynote.value;

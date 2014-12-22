@@ -180,7 +180,7 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
             public DocLibraryList[] findAll() {
 
                 try {
-                    String SQL ="select * from LibraryList where DATEDIFF(m,Dou_Date,SYSDATETIME()) <=3 "
+                    String SQL ="select * from LibraryList where Lib_TmpId!=0 And DATEDIFF(m,Dou_Date,SYSDATETIME()) <=3 "
                                 +"Order By Dou_Date desc";
                     PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                     ResultSet rs = pstmt.executeQuery();

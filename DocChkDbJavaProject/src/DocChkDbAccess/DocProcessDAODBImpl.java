@@ -92,6 +92,8 @@ import java.util.ArrayList;
                 PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                 pstmt.setInt(1, Proc_Id);
                 pstmt.setInt(2, Proc_Id);
+                pstmt.executeUpdate();
+                pstmt.close();
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

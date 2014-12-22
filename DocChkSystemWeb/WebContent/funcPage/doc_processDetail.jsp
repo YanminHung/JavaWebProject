@@ -33,7 +33,7 @@ EmpolyeeDAOImpl implEmp = new EmpolyeeDAOImpl();
     padding:0px 0px;
     }
 #table-warp{
-    width:400px;
+    width:450px;
     height:auto !important;
     height: 250px;
     max-height: 250px;
@@ -42,7 +42,7 @@ EmpolyeeDAOImpl implEmp = new EmpolyeeDAOImpl();
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);  
     }
 .title{
-    width: 388px;
+    width: 438px;
     background:#43464c;
     color:white;
     font-family: 微軟正黑體;
@@ -82,7 +82,7 @@ EmpolyeeDAOImpl implEmp = new EmpolyeeDAOImpl();
 }
 .table-head th:last-of-type,.table-body td:last-of-type
 {
-    width:125px;
+    width:175px;
 }
 .table-head table,.table-body table{
     width:100%;
