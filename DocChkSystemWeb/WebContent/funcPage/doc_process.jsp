@@ -151,7 +151,7 @@ a{
 <body>
 <div id="table-warp">
 <div id="top">
-<form action="" method="post">
+<form action="processDelete.jsp" method="post">
     <div class="table-head">
         <div class="title">進度查詢</div>
         <table id="table-h">
@@ -178,11 +178,11 @@ a{
                 { 
                     Document_Detail r = R.get(i);                   
                     String funcStr = "\"ifram_change(" + r.getDou_No() +  ")\"";
-                    
+                    //String funcDel = "processDelete.jsp";
                 %>
                     <tr onclick=<%= funcStr %> >
                 
-                    <td><input type="checkbox" name="select" id="select" value='加Code'></td>
+                    <td><input type="checkbox" name="chIsHis" id="chIsHis" value=<%=r.getDou_No()%>></td>
                     <td><a class="show_hide" name="show_hide" href="#"><%
                     int Proc_BO = r.getStatus();
                     String status = "";
