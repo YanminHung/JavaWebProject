@@ -73,6 +73,18 @@ public class DetailDAOImpl implements DetailDAO {
         }
 
     }
+    @Override
+    public void updateIsHistory(int Dou_No) {
+    	try {
+            String SQL="Update Document_Detail set Dou_IsHistoryCheck=1 where Dou_No = ?";
+            PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement( SQL );
+            pstmt.setInt(1, Dou_No);
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void CheckClick(String Dou_TmpNo) {
@@ -322,7 +334,7 @@ public class DetailDAOImpl implements DetailDAO {
                     
     }
     
-    // Dou_Status 0:¹w³]¼f®Ö¤¤    1:¼f®Ö§¹¦¨   2:°h¥ó
+    // Dou_Status 0:ï¿½wï¿½]ï¿½fï¿½Ö¤ï¿½    1:ï¿½fï¿½Ö§ï¿½ï¿½ï¿½   2:ï¿½hï¿½ï¿½
     @Override
     public void updateStatusFlag(int Dou_No,int Dou_Status) {
         try {

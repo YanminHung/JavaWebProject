@@ -8,6 +8,7 @@ public interface DetailDAO {
     public void delete(String Dou_TmpNo);
     public void updateDraftFlag(int Dou_No);
     public void updateStatusFlag(int Dou_No,int Dou_Status);
+    public void updateIsHistory(int Dou_No);
     public void CheckClick(String Dou_TmpNo);
     public void CheckStatus(String Dou_TmpNo,int Dou_Status);
     public Document_Detail searchNo(int Dou_No);
