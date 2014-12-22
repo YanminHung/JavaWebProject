@@ -126,27 +126,36 @@ EmpolyeeDAOImpl implEmp = new EmpolyeeDAOImpl();
         <table id="table-b">
             <tbody>
                 <!--更改下面-->
+                <%
+                int index = 1;
+                for (DocProcess o:rs ){ %>
                 <tr>
-                	<% for (DocProcess o:rs ){ %>
-                    <td><% out.print(o.getProc_TmpNo());%></td>
+                    <td><% out.print( index++ ); %></td>
                     <td>
                     <% 
                     int No = o.getProc_Emp_Id();
                     Empolyee m = implEmp.findByNo(No);
-                    out.print(m.getId());
+                    out.print(m.getName());
                     %></td>
                     <td>
                     <% 
                     int Proc_BO = o.getProc_BreakOff();
                     String status="";
-                    if(Proc_BO==0){status="未審核";}
-                    if(Proc_BO==1){status="已審核";}
-                    if(Proc_BO==2){status="退件";}
+                    if( o.getProc_CheckD() != null ){
+                        if(Proc_BO==0){status="已審核";}
+                        else if(Proc_BO==1){status="退件";}
+                    }else{status="未審核";}
                     out.print(status);
                     %></td>
-                    <td><% out.print(o.getProc_CheckD());%></td>
-                    <% } %>
+                    <td><%
+                    if( o.getProc_CheckD() != null )
+                    {
+                        out.print(o.getProc_CheckD().substring(0,16));
+                    }
+                    %></td>
+                    
                 </tr>
+                <% } %>
             </tbody>
         </table>
     </div>

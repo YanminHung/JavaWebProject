@@ -179,16 +179,15 @@ a{
                     Document_Detail r = R.get(i);                   
                     String funcStr = "\"ifram_change(" + r.getDou_No() +  ")\"";
                     
-                    
                 %>
                     <tr onclick=<%= funcStr %> >
                 
-                    <td><input type="checkbox" name="select" id="select" /></td>
+                    <td><input type="checkbox" name="select" id="select" value='加Code'></td>
                     <td><a class="show_hide" name="show_hide" href="#"><%
                     int Proc_BO = r.getStatus();
                     String status = "";
-                    if(Proc_BO==0){status="未審核";}
-                    if(Proc_BO==1){status="已審核";}
+                    if(Proc_BO==0){status="審核中";}
+                    if(Proc_BO==1){status="審核完畢";}
                     if(Proc_BO==2){status="退件";}
                     out.print(status);
                     %></a></td>
