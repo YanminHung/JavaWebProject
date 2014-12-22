@@ -149,9 +149,9 @@ function opnefile( fileURL )
                 <!--更改下面-->
                 <tr>
                     <td width="150" align="center">申請編號</td>
-                    <td><input type="text" name="Dou_TmpNo" disabled="disabled" value="<%=docDetail.getDou_TmpNo() %>"></td>
+                    <td><%=docDetail.getDou_TmpNo() %> </td>
                     <td width="150" align="center">發文日期</td>
-                    <td><input type="text" name="Dou_Date" disabled="disabled" value="<%=docDetail.getDou_Date().substring(0,11) %>" ></td>
+                    <td><%=docDetail.getDou_Date().substring(0,11) %> </td>
                 </tr>
           
                 <tr>
@@ -162,7 +162,7 @@ function opnefile( fileURL )
                         <input type="radio" name="Dou_Speed" disabled="disabled" value=2 <% if( docDetail.getDou_Speed() == 2 ) out.print("checked"); %> >其他
                     </td>
                     <td width="150" align="center">申請人</td>
-                    <td><input type="text" name="Dou_Date" disabled="disabled" value="<%=Author %>" ></td>
+                    <td><%=Author %> </td>
                 </tr>
             
                 <tr>

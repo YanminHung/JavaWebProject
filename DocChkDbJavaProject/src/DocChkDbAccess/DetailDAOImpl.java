@@ -321,4 +321,20 @@ public class DetailDAOImpl implements DetailDAO {
         return null;
                     
     }
+    
+    // Dou_Status 0:預設審核中    1:審核完成   2:退件
+    @Override
+    public void updateStatusFlag(int Dou_No,int Dou_Status) {
+        try {
+            String SQL="Update Document_Detail set Dou_Status = ?  where Dou_No = ?";
+            PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement( SQL );
+            pstmt.setInt(1, Dou_Status);
+            pstmt.setInt(2, Dou_No);
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

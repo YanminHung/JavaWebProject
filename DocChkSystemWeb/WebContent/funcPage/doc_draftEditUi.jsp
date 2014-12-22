@@ -220,7 +220,7 @@ function opnefile( fileURL )
                         else
                         {
                         %>
-                                                                  無附件...
+                        <input type="file" name="Dou_Link" id="Dou_Link" class="file" >
                         <%
                         }
                         %>

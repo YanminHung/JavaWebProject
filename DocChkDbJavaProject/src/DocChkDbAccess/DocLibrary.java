@@ -16,11 +16,12 @@ public class DocLibrary {
 	 * 新增
 	 * @param t 暫時文號
 	 * @param d 正式文號
+	 * @param s 1:置頂 0:預設
 	 */
-    public DocLibrary(int t,String d)
+    public DocLibrary(int t,int s)
 	{
 		this.Lib_TmpId = t;
-		this.Lib_DocNO = d;
+		this.Lib_SetTop = s;
 	}
 	/**
 	 * 查詢

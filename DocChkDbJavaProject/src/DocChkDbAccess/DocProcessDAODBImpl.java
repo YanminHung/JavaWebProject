@@ -86,11 +86,12 @@ import java.util.ArrayList;
 		{
             try {
                 String SQL ="Update  Document_Process Set Proc_BreakOff=1,Proc_CheckD=SYSDATETIME()"
-                        +"where Proc_TmpNo =? ";
+                        +" where Proc_TmpNo = ? and Proc_Flow_Seq = "
+                        +"( select min(Proc_Flow_Seq) from Document_Process"   
+                        +"  where  Proc_TmpNo = ? and Proc_BreakOff=0  and Proc_CheckD is null )"; 
                 PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                 pstmt.setInt(1, Proc_Id);
-                pstmt.executeUpdate();
-                pstmt.close();
+                pstmt.setInt(2, Proc_Id);
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

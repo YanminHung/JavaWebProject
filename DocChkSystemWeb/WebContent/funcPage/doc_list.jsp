@@ -74,12 +74,21 @@ tr{
     }
 </style>
 </head>
+
+<script type="text/javascript">    
+function opnefile( fileURL )
+{
+    window.open( fileURL, "文件內容", config="height=720,width=960" );
+}
+</script>
+
 <body>
 <%
     int Dou_TmpId = Integer.valueOf(request.getParameter("Lib_TmpId"));
     DetailDAOImpl  impl = new DetailDAOImpl();
     Document_Detail  r = impl.searchNo(Dou_TmpId);
 
+    String Author = new EmpolyeeDAOImpl().findByNo( r.getDou_Author() ).getName();
 %>
 <div id="table-warp">
     <form action="" method="post">
@@ -101,9 +110,19 @@ tr{
           </tr>
           <tr>
             <td align="center" width="150" height="40">件速</td>
+            <!-- 
             <td colspan="3" width="650">
-            <% out.print(r.getDou_Speed()); %>
+            <% //out.print(r.getDou_Speed()); %>
             </td>
+             -->
+             <td width="150" align="center">件速</td>
+             <td>
+                 <input type="radio" name="Dou_Speed" disabled="disabled" value=0 <% if( r.getDou_Speed() == 0 ) out.print("checked"); %> >急件
+                 <input type="radio" name="Dou_Speed" disabled="disabled" value=1 <% if( r.getDou_Speed() == 1 ) out.print("checked"); %> >普件
+                 <input type="radio" name="Dou_Speed" disabled="disabled" value=2 <% if( r.getDou_Speed() == 2 ) out.print("checked"); %> >其他
+             </td>
+             <td width="150" align="center">申請人</td>
+             <td><input type="text" name="Dou_Date" disabled="disabled" value="<%=Author %>" ></td>
           </tr>
           <tr>
             <td align="center" width="150">主旨</td>
@@ -120,7 +139,24 @@ tr{
           <tr>
             <td align="center" width="150" height="40">附件</td>
             <td colspan="3"  width="650">
-                <input type="file" name="fileField" id="fileField" class="file" >
+                <!-- <input type="file" name="fileField" id="fileField" class="file" >  -->
+                <%
+                if( !r.getDou_Link().equals("0"))
+                {
+                    String fileUrl = "\"opnefile('" +
+                                     r.getDou_Link() +
+                                     "')\"";
+                %>
+                <input name="file" id="file" type="button" value="開啟附件" onclick=<%=fileUrl %> >
+                <%
+                }
+                else
+                {
+                %>
+                                             無附件...
+                <%
+                }
+                %>
             </td>
           </tr>
         </tbody>
