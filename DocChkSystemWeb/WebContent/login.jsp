@@ -30,6 +30,7 @@ body{
   margin:0px auto;
   background:#297AAE;
   height: 80px;
+  background-image:url(../images/bg02.png);
 }
 #logo{
   display: block;

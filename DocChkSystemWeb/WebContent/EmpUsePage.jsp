@@ -18,11 +18,10 @@ if (!login.equals("Employee"))
 <head>
 	<meta charset="UTF-8">
 	<title>文件簽核系統-首頁</title>
-	<script src="js/jquery-1.3.2.js" type="text/javascript"></script>
 	<script src="js/jquery-1.11.1.js"></script>
-	<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
 	<script type="text/javascript" src="js/minwt.auto_full_height.mini.js"></script>
 	<link rel="stylesheet" href="css/theme.css">
+	<link rel="stylesheet" href="css/iconmoon.css">
 	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 <script type="text/javascript">
@@ -34,9 +33,7 @@ $(document).ready(function(e) {
 			$(".sub:eq("+e.data.id+")").slideDown(500);
 		});
 	};
-
 });
-
 function changeMainPage()
 {
 	
@@ -51,6 +48,16 @@ function changeSubBrowse( str )
 }
 
 </script>
+<style>
+.menu>span{
+	font-size:32px;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	padding-right: 10px;
+	vertical-align: middle;
+	text-shadow: 0px 1px 3px black;
+}
+</style>
 </head>
 <body>
 	<div id="head" _height="none">
@@ -59,30 +66,33 @@ function changeSubBrowse( str )
 		</div>
 		<div id="toptool">
 			<ul>
-				<li><a href="#"><img src="images/logout.png" alt="" width="50%" height="50%"></a>
+				<li><a href="#"><span class="icon-logout"></span></a>
 					<ul>
 						<li><a href="changepassword.jsp" target="subBrowse">密碼修改</a></li>
 						<li><a href="Logout.jsp">登出</a></li>
 					</ul>
 				</li>
-				<li><a href="javascript:history.forward()" target="subBrowse"><img src="images/next.png" alt="" width="50%" height="50%"></a></li>
-				<li><a href="funcPage/PersonnelMainPage.jsp" target="subBrowse"><img src="images/home.png" alt="" width="50%" height="50%"></a></li>
-				<li><a href="javascript:history.back()" target="subBrowse"><img src="images/back.png" alt="" width="50%" height="50%"></a></li>
+				<li><a href="javascript:history.forward()" target="subBrowse"><span class="icon-right"></span></a></li>
+				<li><a href="funcPage/PersonnelMainPage.jsp" target="subBrowse"><span class="icon-home"></span></a></li>
+				<li><a href="javascript:history.back()" target="subBrowse"><span class="icon-left"></span></a></li>
 			</ul>
 		</div>
 	</div>
 	<div id="lside" _height="auto">
 		<div id="hello">
-		<%
-            Empolyee m =( Empolyee) session.getAttribute("Empolyee");
-            
-		    if( m == null )
-		        response.sendRedirect("login.jsp");
-        %>
-        <span class="span1">歡迎光臨</span>
-        <span class="span2"><%out.print(m.getName());%></span>
+			<div id="bg">
+				<%
+					Empolyee m =( Empolyee) session.getAttribute("Empolyee");
+					
+					if( m == null )
+						response.sendRedirect("login.jsp");
+				%>
+				<span class="span1">Welcome</span>
+				<span class="span2"><%out.print(m.getName());%></span>
+			</div>
 		</div>
-	        <div class="menu">文件</div>
+		<div class="nav">
+	        <div class="menu"><span class="icon-doc"></span>文件</div>
 	            <div class="sub">
 	                <ul>
 						<li><a href="funcPage/addNewDoc.jsp" target="subBrowse" >新增文件</a></li>
@@ -91,7 +101,7 @@ function changeSubBrowse( str )
 						<li><a href="funcPage/doc_history.jsp" target="subBrowse" >歷史查詢</a></li>
 	                </ul>
 	            </div>
-	        <div class="menu">請假單</div>
+	        <div class="menu"><span class="icon-aol_2"></span>請假單</div>
 	            <div class="sub">
 	                <ul>
 						<li><a href="#">新增文件</a></li>
@@ -100,7 +110,7 @@ function changeSubBrowse( str )
 						<li><a href="#">歷史查詢</a></li>
 	                </ul>
 	            </div>
-	        <div class="menu">請購單</div>
+	        <div class="menu"><span class="icon-shop_2"></span>請購單</div>
 	            <div class="sub">
 	                <ul>
 						<li><a href="#">新增文件</a></li>
@@ -109,12 +119,13 @@ function changeSubBrowse( str )
 						<li><a href="#">歷史進度</a></li>
 	                </ul>
 	            </div>
-	        <div class="menu">文件查詢</div>
+	        <div class="menu"><span class="icon-search_2"></span>文件查詢</div>
 	            <div class="sub">
 	                <ul>
 						<li><a href="funcPage/search.jsp" target="subBrowse" >文件查詢</a></li>
 	                </ul>
 	            </div>
+		</div>
 	</div>
 	<div id="right">
 		<div id="con" _height="auto">

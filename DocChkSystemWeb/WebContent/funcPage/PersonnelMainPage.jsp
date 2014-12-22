@@ -18,6 +18,7 @@ DocLibraryList[] r = impl.findAnnouncementAll();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="../css/iconmoon.css">
 <script type="text/javascript">    
     function ShowPage( Lib_TmpId )
     {
@@ -35,7 +36,6 @@ DocLibraryList[] r = impl.findAnnouncementAll();
     width:800px;
     margin:6px auto;
     text-align:center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
 .title{
     width: 788px;
@@ -52,15 +52,19 @@ DocLibraryList[] r = impl.findAnnouncementAll();
     color:white;
     font-family: 微軟正黑體;
     text-align:left;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
 .table-body{
     width:100%; 
+    height:auto !important;
     height:220px;
+    max-height:220px;
     overflow-y:scroll;
     text-align:left;
     background:#e9e9e9;
     font-family: 微軟正黑體;
     font-size: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
 .table-head th:first-of-type,.table-body td:first-of-type{
     width:50px;
@@ -112,7 +116,16 @@ td a:hover{
 #table-b
 {
     cursor: pointer;
-}       
+}  
+#iframe-con{
+        height: 100%;
+}    
+.icon-push_1{
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	color:#ea8010;
+	font-size:18px;
+}   
 </style>
 </head>
 
@@ -166,7 +179,7 @@ function changeSubBrowse( str )
                         }
                     %>
                     </td>
-                    <td><%=r[i].getDou_Keynote()%> </td>                      
+                    <td><i class="icon-push_1"></i><%=r[i].getDou_Keynote()%> </td>                      
                    
                 </tr>
             <%  }
@@ -181,7 +194,7 @@ function changeSubBrowse( str )
             </tbody>
         </table>
     </div>
-    <div class="iframe-warp">
+    <div id="iframe-con">
         <iframe name="Personnel" width="100%" height="350" src="personnel.jsp" frameborder="0" scrolling="no"></iframe>
     </div>
 </div>

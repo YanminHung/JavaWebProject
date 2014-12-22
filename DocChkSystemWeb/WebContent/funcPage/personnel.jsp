@@ -62,7 +62,9 @@ for( DocProcess o : chkDocList )
     }
 .table-body{
     width:100%; 
+    height:auto !important;
     height:270px;
+    max-height:270px;
     overflow-y:scroll;
     text-align:left;
     background:#e9e9e9;

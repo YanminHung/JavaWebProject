@@ -50,8 +50,10 @@ if (!login.equals("administrator"))
     text-align:left;
 	}
 .table-body{
-	width:100%; 
-	height:100%;
+	width:100%;
+	height:auto !important;
+	height:500px;
+	max-height:500px;
 	overflow-y:scroll;
 	text-align:left;
     background:#e9e9e9;

@@ -54,8 +54,10 @@ function check_all(obj,cName)
     text-align:left;
     }
 .table-body{
-    width:100%; 
+    width:100%;
+    height:auto !important;
     height:430px;
+    max-height:430px;
     overflow-y:scroll;
     text-align:left;
     background:#e9e9e9;
