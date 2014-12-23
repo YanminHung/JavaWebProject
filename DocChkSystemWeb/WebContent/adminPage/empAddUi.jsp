@@ -57,7 +57,7 @@ if (!login.equals("administrator"))
 	}
 .table-body{
 	width:100%; 
-	height:350px;
+	height:250px;
     font-family: 微軟正黑體;
     font-size: 16px;
 	}
@@ -101,9 +101,9 @@ if (!login.equals("administrator"))
 .tdselect{
 	text-align: left;
 }
-#delete{
+#Update{
 	text-align: center;
-	padding: 6px;
+	padding: 12px;
 }
 a{
 	text-decoration: none;
