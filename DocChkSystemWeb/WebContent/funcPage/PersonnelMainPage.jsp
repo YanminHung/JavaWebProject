@@ -167,8 +167,38 @@ function changeSubBrowse( str )
                     String funcStr = "\"ShowPage(" + r[i].getLib_TmpId() + ")\"";
                     %>
                     <tr onclick=<% out.print( funcStr ); %> >
-                    <td><% out.print(r[i].getDou_Speed());  %></td>
-                    <td><% out.print(r[i].getDou_Type()); %></td>      
+                    <td>
+                    <%                  
+                    switch( r[i].getDou_Speed() )
+                    {
+                        case 0:
+                            out.print( "急件" );
+                            break;
+                        case 1:
+                            out.print( "普件" );
+                            break;
+                        case 2:
+                        default:
+                            out.print( "其他" );
+                            break;
+                    }
+                    //out.print(r[i].getDou_Speed());
+                    %>
+                    </td>
+                    <td>
+                    <%
+                    switch( r[i].getDou_Type() )
+                    {
+                        case 1:
+                            out.print( "公告" );
+                            break;
+                        case 2:
+                        default:
+                            out.print( "一般" );
+                            break;
+                    }
+                    //out.print(r[i].getDou_Type());
+                    %>     
                     <td>
                     <%  if (r[i].getDou_Date() !=null)
                         {
