@@ -65,7 +65,7 @@
 	    }
 	.table-body{
 	    width:100%; 
-	    height:548px;
+	    height:477px;
 	    overflow-y:none;
 	    text-align:left;
 	    background:#e9e9e9;

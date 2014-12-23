@@ -50,7 +50,7 @@ body{
     width: 300px;
     height: 300px;
     border-radius: 5px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.75), inset 0 5px 22px 5px white;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.75), inset 0 3px 12px 2px rgba(255,255,255,0.5);
   position: relative;
   margin: 9% 39%;
 }

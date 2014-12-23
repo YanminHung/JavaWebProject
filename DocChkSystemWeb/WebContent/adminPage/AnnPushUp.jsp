@@ -21,9 +21,9 @@ if (!login.equals("administrator"))
     <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/input_button_g.css">
 <script type="text/javascript"> 
-function check_all(obj,cName) 
+function check_all(obj,chkboxflag) 
 { 
-    var checkboxs = document.getElementsByName(cName); 
+    var checkboxs = document.getElementsByName(chkboxflag); 
     for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;} 
 } 
 </script> 
@@ -141,11 +141,11 @@ td a:hover{
 	padding:0px 0px 0px 6px;
 }
 .icon-gonggao{
-	font-size:22px;
-	color:#ea8010;
+	font-size:18px;
+	color:#F1C40F;
 }
 .icon-normal{
-	font-size:22px;
+	font-size:18px;
 	color:#43464c;
 }
 </style>
@@ -187,7 +187,7 @@ DocLibraryList[] r  = impl.findAnnouncementAll();
         <table id="table-h">
             <thead>
                 <tr>
-                <th><input type="checkbox" name="allselect" id="allselect" onclick="check_all(this,'select')"/></th>
+                <th><input type="checkbox" name="allselect" id="allselect" onclick="check_all(this,'chkboxflag')"/></th>
                 <th>狀態</th>
                 <th>日期</th>
                 <th>主旨</th>
@@ -199,37 +199,39 @@ DocLibraryList[] r  = impl.findAnnouncementAll();
         <table id="table-b">
             <tbody>
                 <!--更改下面-->
-                             <%
-                            if( ( r != null ) && ( r.length != 0 ) )
-                            {
-                            for (int i=0;i<r.length;i++)
-                            {    
-                            	  String DocLibNo = r[i].getLib_DocNo();
-                                  String funcStr = "\"ShowPage('" +DocLibNo + "',"+r[i].getLib_TmpId()+ ")\"";
-                                 
-                            %>
-                            <tr>
-                            <td><input type="checkbox" name="chkboxflag" id="chkboxflag" value=<%=r[i].getLib_Id()%> ></td> 
-                            <td>
-	                        <% 	  
-	                         String status = "";
-                             if(r[i].getLib_SetTop()==0){status="";}
-                             else if(r[i].getLib_SetTop()==1){status="\"icon-push_1\"";}
-	                        %>
-	                        <span class = <%=status %>></span>
-                            </td>
-                            <td><%=r[i].getDou_Date().substring(0,11)%></td>
-                            <td onclick=<% out.print( funcStr ); %>><%=r[i].getDou_Keynote() %></td>
-                            </tr>
-                           <%  }
-                           }
-                            else
-                            {
-                            %>
-                            <tr><td colspan="2" >無公告資料</td></tr> 
-                            <%
-                            }
-                            %>
+               <%
+               if( ( r != null ) && ( r.length != 0 ) )
+               {
+               for (int i=0;i<r.length;i++)
+               {    
+               	  String DocLibNo = r[i].getLib_DocNo();
+                  String funcStr = "\"ShowPage('" +DocLibNo + "',"+r[i].getLib_TmpId()+ ")\""; 
+               %>
+               <tr>
+	               <td><input type="checkbox" name="chkboxflag" id="chkboxflag" value=<%=r[i].getLib_Id()%> ></td> 
+	               <td>
+                    <%
+	                String status = "";
+                    if(r[i].getDou_Type()==1){status="\"icon-gonggao\"";}
+                    else{status="\"icon-normal\"";}
+                    //out.print(r[i].getDou_Type());
+                    %> 
+                    <span class = <%=status %>></span>
+	               </td>
+	               <td><%=r[i].getDou_Date().substring(0,11)%></td>
+	               <td onclick=<% out.print( funcStr ); %>><%=r[i].getDou_Keynote() %></td>
+               </tr>
+               <%  }
+               }
+               else
+               {
+               %>
+               <tr>
+               		<td colspan="2" >無公告資料</td>
+               </tr> 
+               <%
+               }
+               %>
             </tbody>
         </table>
     </div>

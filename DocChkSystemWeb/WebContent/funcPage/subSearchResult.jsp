@@ -37,6 +37,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     <meta charset="UTF-8">
     <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/input_button_g.css">
+    <link rel="stylesheet" href="../css/iconmoon.css">
     <title>文件簽核系統-查詢結果</title>
 
 <script type="text/javascript">    
@@ -95,7 +96,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     width:100%;
     }
 .table-head th:first-of-type,.table-body td:first-of-type{
-    width:80px;
+    width:130px;
 }
 .table-head th:nth-child(2),.table-body td:nth-child(2)
 {
@@ -103,7 +104,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 }
 .table-head th:nth-child(3),.table-body td:nth-child(3)
 {
-    width:150px;
+    width:100px;
 }
 .table-head th:nth-child(4),.table-body td:nth-child(4)
 {
@@ -144,6 +145,14 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 	background: gray;
 	color: white;
 	}
+.icon-gonggao{
+	font-size:18px;
+	color:#F1C40F;
+}
+.icon-normal{
+	font-size:18px;
+	color:#43464c;
+}
 </style>
 </head>
 
@@ -175,12 +184,15 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 				%>
 		   		<tr onclick=<% out.print( funcStr ); %>>
                     <td><%out.print(r[i].getLib_DocNo()); %></td>
-                    <td><%
-                    String type="";
-                    if(r[i].getDou_Type()==1) type="公告";
-                    if(r[i].getDou_Type()==2) type="一般文件";
-                    out.print(type); 
-                    %></td>
+                    <td>
+                    <%
+	                String status = "";
+                    if(r[i].getDou_Type()==1){status="\"icon-gonggao\"";}
+                    else{status="\"icon-normal\"";}
+                    //out.print(r[i].getDou_Type());
+                    %> 
+                    <span class = <%=status %>></span>
+                    </td>
                     <td><%out.print(r[i].getDou_Date().substring(0,11)); %></td>
                     <td><%
                     EmpolyeeDAOImpl Eimpl = new EmpolyeeDAOImpl();

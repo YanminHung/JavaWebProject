@@ -173,7 +173,7 @@ a{
 	font-size: 22px;
 }
 .icon-pending_1{/*審核中*/
-	color:#ea8010;
+	color:#E78127;
 	font-size: 22px;
 }
 .icon-back_2{/*退回*/

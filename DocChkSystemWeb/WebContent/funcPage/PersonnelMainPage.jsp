@@ -123,22 +123,22 @@ td a:hover{
 }
 .icon-0{
 	font-size:22px;
-	color:#c11920;
+	color:#C0392B;
 	padding:0px 0px 0px 6px;
 }
 .icon-1{
 	font-size:22px;
-	color:#546b7e;
+	color:#34495E;
 	padding:0px 0px 0px 6px;
 }
 .icon-2{
 	font-size:22px;
-	color:#a78b51;
+	color:#2980B9;
 	padding:0px 0px 0px 6px;
 }
 .icon-gonggao{
 	font-size:18px;
-	color:#ea8010;
+	color:#F1C40F;
 }
 .icon-normal{
 	font-size:18px;
