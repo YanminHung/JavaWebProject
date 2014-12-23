@@ -35,6 +35,7 @@ String Author = new EmpolyeeDAOImpl().findByNo( docDetail.getDou_Author() ).getN
     <title>文件簽核系統-草稿修改</title>
     <script type="text/javascript" src="../js/minwt.auto_full_height.mini.js"></script>
     <link rel="stylesheet" href="../css/input_button_g.css">
+    <link rel="stylesheet" href="../css/buttons_small.css"> 
 <style>
 *{
     margin:0px;;
@@ -264,7 +265,7 @@ function opnefile( fileURL )
                                              docDetail.getDou_Link() +
                                              "')\"";
                         %>
-                        <input name="file" id="file" type="button" value="開啟附件" onclick=<%=fileUrl %> >
+                        <input name="file" id="file" type="button" value="開啟附件" class="button button-rounded button-flat-primary" onclick=<%=fileUrl %> >
                         <%
                         }
                         else

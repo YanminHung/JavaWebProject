@@ -17,7 +17,8 @@ if (!login.equals("Employee"))
 <head>
     <meta charset="UTF-8">
     <title>文件簽核系統-公告內容查詢</title>
-    <script type="text/javascript" src="js/minwt.auto_full_height.mini.js"></script>
+    <script type="text/javascript" src="../js/minwt.auto_full_height.mini.js"></script>
+    <link rel="stylesheet" href="../css/buttons_small.css"> 
 <style>
 *{
     margin:0px;;
