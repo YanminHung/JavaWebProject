@@ -33,9 +33,7 @@ function checkAll(eventInfo) {
     for (var i = 0; i < options.length; i++) {
         options[i].checked = event.srcElement.checked;
     }
-}
-</script>
-<script type="text/javascript">    
+} 
     function ShowPage( Dou_No )
     {
         document.location.href="doc_draftEditUi.jsp?Dou_No=" + Dou_No;
@@ -153,6 +151,7 @@ ArrayList<Document_Detail> r1  = impl.searchDraftByAuthor(m.getNo());
         <table id="table-h">
             <thead>
                 <tr>
+                <th><input type="checkbox" name="allselect" id="allselect" onclick="check_all(this,'chkboxflag')"/></th>
                 <th>日期</th>
                 <th>主旨</th>
                 </tr>

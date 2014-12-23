@@ -28,6 +28,7 @@ if (!login.equals("Employee"))
     
     <meta charset="UTF-8">
     <title>歷史查詢</title>
+    <link rel="stylesheet" href="../css/iconmoon.css">
 <style>
 *{
     margin:0px 0px;
@@ -125,6 +126,41 @@ td a:hover{
 {
     cursor: pointer;
 }  
+.icon-back_1{/*退回*/
+	color:#d81e06;
+	font-size: 22px;
+}
+.icon-pendover_1{/*審核完*/
+	color:#0e932e;
+	font-size: 22px;
+}
+.icon-pend_1{/*未審核*/
+	color:#33475f;
+	font-size: 22px;
+}
+.icon-0{
+	font-size:22px;
+	color:#c11920;
+	padding:0px 0px 0px 6px;
+}
+.icon-1{
+	font-size:22px;
+	color:#546b7e;
+	padding:0px 0px 0px 6px;
+}
+.icon-2{
+	font-size:22px;
+	color:#a78b51;
+	padding:0px 0px 0px 6px;
+}
+.icon-gonggao{
+	font-size:22px;
+	color:#ea8010;
+}
+.icon-normal{
+	font-size:22px;
+	color:#43464c;
+}
 </style>
 </head>
 <body>
@@ -159,37 +195,23 @@ td a:hover{
             %>
                     <tr onclick=<% out.print( funcStr ); %> >
 	                <td>
-	                <% 	                
-	                switch( r[i].getDou_Speed() )
-                    {
-                        case 0:
-                            out.print( "急件" );
-                            break;
-                        case 1:
-                            out.print( "普件" );
-                            break;
-                        case 2:
-                        default:
-                            out.print( "其他" );
-                            break;
-                    }
+	                <% 	  
+	                String status = "";
+                    if(r[i].getDou_Speed()==0){status="\"icon-0\"";}
+                    if(r[i].getDou_Speed()==1){status="\"icon-1\"";}
+                    if(r[i].getDou_Speed()==2){status="\"icon-2\"";}
 	                //out.print(r[i].getDou_Speed());
 	                %>
+	                <span class = <%=status %>></span>
 	                </td>
 	                <td>
 	                <%
-	                switch( r[i].getDou_Type() )
-                    {
-                        case 1:
-                            out.print( "公告" );
-                            break;
-                        case 2:
-                        default:
-                            out.print( "一般" );
-                            break;
-                    }
+	                String status2 = "";
+                    if(r[i].getDou_Speed()==1){status2="\"icon-gonggao\"";}
+                    if(r[i].getDou_Speed()==2){status2="\"icon-normal\"";}
 	                //out.print(r[i].getDou_Type());
 	                %>
+	                <span class = <%=status2 %>></span>
 	                </td>      
 	                <td>
 	                <%  if (r[i].getDou_Date() !=null)
