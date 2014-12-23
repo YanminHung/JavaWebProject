@@ -141,9 +141,8 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
                         <td colspan="3" class="tdselect">
                             <select name="type" id="type">
                                 <option value="">全部</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
+                                <option value="1">公告</option>
+                                <option value="2">一般文件</option>
                             </select>
                         </td>
                     </tr>
@@ -163,9 +162,12 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
                         <td class="tdselect">
                             <select name="depart" id="depart">
                             	<option value="">全部</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
+                            	<option value=總經理室>總經理室  </option>
+                                <option value=管理部>管理部  </option>
+                                <option value=財務部>財務部  </option>
+                                <option value=資訊部>資訊部  </option>
+                                <option value=業務部>業務部  </option>
+                                <option value=製造部>製造部  </option>
                             </select>
                         </td>
                         <td>承辦人</td>

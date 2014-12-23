@@ -87,7 +87,8 @@ tr{
 <script type="text/javascript">    
 function opnefile( fileURL )
 {
-    window.open( fileURL, "文件內容", config="height=720,width=960" );
+	var p = window.open( fileURL, "文件內容", config="height=720,width=960" );
+	p.focus();
 }
 </script>
 
