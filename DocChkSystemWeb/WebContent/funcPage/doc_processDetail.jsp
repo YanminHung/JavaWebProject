@@ -27,6 +27,7 @@ EmpolyeeDAOImpl implEmp = new EmpolyeeDAOImpl();
 <head>
     <meta charset="UTF-8">
     <title>文件簽核系統-簽核明細</title>
+    <link rel="stylesheet" href="../css/iconmoon.css">
 <style>
 *{
     margin:0px 0px;
@@ -104,6 +105,38 @@ EmpolyeeDAOImpl implEmp = new EmpolyeeDAOImpl();
     border: 0px;
     padding: 6px;
     }
+.icon-back_1{/*退回*/
+    color:#d81e06;
+    font-size: 22px;
+}
+.icon-pendover_1{/*審核完*/
+    color:#0e932e;
+    font-size: 22px;
+}
+.icon-pend_1{/*未審核*/
+    color:#33475f;
+    font-size: 22px;
+}
+.icon-pending_1{/*審核中*/
+    color:#ea8010;
+    font-size: 22px;
+}
+.icon-back_2{/*退回*/
+    color:#d81e06;
+    font-size: 22px;
+}
+.icon-pendover_2{/*審核完*/
+    color:#0e932e;
+    font-size: 22px;
+}
+.icon-pend_2{/*未審核*/
+    color:#33475f;
+    font-size: 22px;
+}
+.icon-pending_2{/*審核中*/
+    color:#ea8010;
+    font-size: 22px;
+}
 </style>
 </head>
 <body>
@@ -141,12 +174,18 @@ EmpolyeeDAOImpl implEmp = new EmpolyeeDAOImpl();
                     <% 
                     int Proc_BO = o.getProc_BreakOff();
                     String status="";
+                    /*
                     if( o.getProc_CheckD() != null ){
                         if(Proc_BO==0){status="已審核";}
                         else if(Proc_BO==1){status="退件";}
                     }else{status="未審核";}
                     out.print(status);
-                    %></td>
+                    */
+                    if( o.getProc_CheckD() != null ){
+                        if(Proc_BO==0){status="\"icon-pendover_1\"";}
+                        else if(Proc_BO==1){status="\"icon-back_1\"";}
+                    }else{status="\"icon-pend_1\"";}
+                    %><span class = <%=status %>></span></td>
                     <td><%
                     if( o.getProc_CheckD() != null )
                     {

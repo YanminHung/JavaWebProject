@@ -29,6 +29,8 @@ if (!login.equals("Employee"))
     <title>文件簽核系統-進度查詢</title>
     <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/input_button_g.css">
+    <link rel="stylesheet" href="../css/iconmoon.css">
+    
 <script type="text/javascript"> 
 $(document).ready(function(){  
     $('.slidingDiv').hide();    
@@ -230,11 +232,16 @@ a{
                     <td><a class="show_hide active" name="show_hide" href="#"><%
                     int Proc_BO = r.getStatus();
                     String status = "";
+                    /*
                     if(Proc_BO==0){status="審核中";}
                     if(Proc_BO==1){status="審核完畢";}
                     if(Proc_BO==2){status="退件";}
-                    out.print(status);
-                    %></a></td>
+                    */
+                    if(Proc_BO==0){status="\"icon-pending_1\"";}
+                    if(Proc_BO==1){status="\"icon-pendover_1\"";}
+                    if(Proc_BO==2){status="\"icon-back_1\"";}
+                    //out.print(status);
+                    %><span class = <%=status %>></span></a></td>
                     <td><a class="show_hide active" name="show_hide" href="#"><%=r.getDou_Date().substring(0,11)%></a></td>
                     <td><a class="show_hide active" name="show_hide" href="#"><%out.print(r.getDou_Keynote());%></a></td>
                 </tr>    
