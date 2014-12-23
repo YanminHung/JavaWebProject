@@ -35,7 +35,24 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../css/input_button_g.css">
     <title>文件簽核系統-查詢結果</title>
+
+<script type="text/javascript">    
+   /* function ShowPage( Tmp_Id,Dou_No )
+    {
+        document.location.href="subDetail.jsp?Dou_No=" + Tmp_Id +"&realNo="+ Dou_No;
+    }*/
+    
+    function opnefile( Tmp_Id,Dou_No )
+    {
+    	str = "subDetail.jsp?Dou_No=" + Tmp_Id +"&realNo="+ Dou_No;
+    	window.open( str, "文件內容", config="height=720,width=960" );
+    }
+
+</script>    
+
 <style>
 *{
     margin:0px 0px;
@@ -105,7 +122,8 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 #table-b{
     border-collapse:collapse;
     border: 0px;
-    table-layout: fixed;  
+    table-layout: fixed;
+    cursor: pointer;
     }
 #table-h,tr,th{
     border-collapse:collapse;
@@ -121,6 +139,10 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     white-space:nowrap;
     overflow-x:hidden;
     }
+#table-b tr:hover{
+	background: gray;
+	color: white;
+	}
 </style>
 </head>
 
@@ -146,16 +168,26 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
         <table id="table-b">
             <tbody>
                 <!--更改下面-->
-                <% for(int i=0 ; i<r.length ; i++)
-				{ 
+                <% 
+                for(int i=0 ; i<r.length ; i++){
+                	String funcStr = "\"opnefile('" +r[i].getLib_DocNo()+ "',"+r[i].getLib_TmpId()+")\"";
 				%>
-		   		<tr>
+		   		<tr onclick=<% out.print( funcStr ); %>>
                     <td><%out.print(r[i].getLib_DocNo()); %></td>
-                    <td><%out.print(r[i].getDou_Type()); %></td>
-                    <td><%out.print(r[i].getDou_Date()); %></td>
-                    <td>承辦人</td>
-                    <td>部門:<%out.print(r[i].getEmp_Depart()); %></td>
-                    <td>主旨</td>
+                    <td><%
+                    String type="";
+                    if(r[i].getDou_Type()==1) type="公告";
+                    if(r[i].getDou_Type()==2) type="一般文件";
+                    out.print(type); 
+                    %></td>
+                    <td><%out.print(r[i].getDou_Date().substring(0,11)); %></td>
+                    <td><%
+                    EmpolyeeDAOImpl Eimpl = new EmpolyeeDAOImpl();
+                    Empolyee em = Eimpl.findByNo(r[i].getDou_Author());
+                    out.print(em.getName()); 
+                    %></td>
+                    <td><%out.print(r[i].getEmp_Depart()); %></td>
+                    <td><%out.print(r[i].getDou_Keynote()); %></td>
                 </tr>
 				<% } %>
             </tbody>
