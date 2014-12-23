@@ -83,17 +83,20 @@ tr{
 }
 </style>
 </head>
+
 <script type="text/javascript">    
 function opnefile( fileURL )
 {
     window.open( fileURL, "文件內容", config="height=720,width=960" );
 }
 </script>
+
 <body>
 <%
     int Dou_TmpId = Integer.valueOf(request.getParameter("Lib_TmpId"));
     DetailDAOImpl  impl = new DetailDAOImpl();
     Document_Detail  r = impl.searchNo(Dou_TmpId);
+    String DocLibNum = request.getParameter("DocLibNo");
 
 %>
 <div id="table-warp">
@@ -104,8 +107,8 @@ function opnefile( fileURL )
             <tbody>
                 <!--更改下面-->
           <tr>
-            <td align="center" width="150" height="40">申請編號</td>
-            <td><% out.print(r.getDou_TmpNo()); %></td>
+            <td align="center" width="150" height="40">文件編號</td>
+            <td><% out.print(DocLibNum); %></td>
             <td align="center" width="150" >發文日期</td>
             <td>
             <% if (r.getDou_Date() !=null)
@@ -117,7 +120,9 @@ function opnefile( fileURL )
           <tr>
             <td align="center" width="150" height="40">件速</td>
             <td colspan="3" width="650">
-            <% out.print(r.getDou_Speed()); %>
+                <input type="radio" name="Dou_Speed" disabled="disabled" value=1 <% if( r.getDou_Speed() == 0 ) out.print("checked"); %> >急件
+                <input type="radio" name="Dou_Speed" disabled="disabled" value=1 <% if( r.getDou_Speed() == 1 ) out.print("checked"); %> >普件
+                <input type="radio" name="Dou_Speed" disabled="disabled" value=2 <% if( r.getDou_Speed() == 2 ) out.print("checked"); %> >其他
             </td>
           </tr>
           <tr>

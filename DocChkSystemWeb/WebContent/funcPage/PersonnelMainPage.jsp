@@ -19,12 +19,6 @@ DocLibraryList[] r = impl.findAnnouncementAll();
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../css/iconmoon.css">
-<script type="text/javascript">    
-    function ShowPage( Lib_TmpId )
-    {
-    	document.location.href="announcement_list.jsp?Lib_TmpId=" + Lib_TmpId;
-    }
-</script>
     <meta charset="UTF-8">
     <title>公告欄</title>
 <style>
@@ -161,6 +155,12 @@ function changeSubBrowse( str )
     parent.changeSubBrowse( str );;
 }
 
+function ShowPage( DocLibNo, Lib_TmpId )
+{
+    document.location.href="announcement_list.jsp?Lib_TmpId=" + Lib_TmpId +
+                           "&DocLibNo=" + DocLibNo;
+}
+
 </script>
 
 <body>
@@ -187,7 +187,8 @@ function changeSubBrowse( str )
             {
                 for (int i=0;i<r.length;i++)
                 {
-                    String funcStr = "\"ShowPage(" + r[i].getLib_TmpId() + ")\"";
+                    String DocLibNo = r[i].getLib_DocNo();
+                    String funcStr = "\"ShowPage('" + DocLibNo + "', " + r[i].getLib_TmpId() + ")\"";
                     %>
                     <tr onclick=<% out.print( funcStr ); %> >
                     <td>
@@ -203,7 +204,7 @@ function changeSubBrowse( str )
                     <td>
                     <%
 	                String status2 = "";
-                    if(r[i].getDou_Speed()==1){status2="\"icon-gonggao\"";}
+                    if(r[i].getDou_Type()==1){status2="\"icon-gonggao\"";}
                     else{status2="\"icon-normal\"";}
                     //out.print(r[i].getDou_Type());
                     %> 

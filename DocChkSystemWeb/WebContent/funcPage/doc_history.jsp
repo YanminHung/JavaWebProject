@@ -19,10 +19,11 @@ if (!login.equals("Employee"))
 <html lang="en">
 <head>
 <script type="text/javascript">    
-    function ShowPage( Lib_TmpId )
-    {
-        document.location.href="doc_list.jsp?Lib_TmpId=" + Lib_TmpId;
-    }
+function ShowPage( DocLibNo, Lib_TmpId )
+{
+    document.location.href="doc_list.jsp?Lib_TmpId=" + Lib_TmpId +
+                           "&DocLibNo=" + DocLibNo;
+}
 </script>
     
     
@@ -192,15 +193,16 @@ td a:hover{
             {
                 for (int i=0;i<r.length;i++)
                 {
-                    String funcStr = "\"ShowPage(" + r[i].getLib_TmpId() + ")\"";
+                    String DocLibNo = r[i].getLib_DocNo();
+                    String funcStr = "\"ShowPage('" + DocLibNo + "', " + r[i].getLib_TmpId() + ")\"";
             %>
                     <tr onclick=<% out.print( funcStr ); %> >
 	                <td>
 	                <% 	  
 	                String status = "";
                     if(r[i].getDou_Speed()==0){status="\"icon-0\"";}
-                    if(r[i].getDou_Speed()==1){status="\"icon-1\"";}
-                    if(r[i].getDou_Speed()==2){status="\"icon-2\"";}
+                    else if(r[i].getDou_Speed()==1){status="\"icon-1\"";}
+                    else if(r[i].getDou_Speed()==2){status="\"icon-2\"";}
 	                //out.print(r[i].getDou_Speed());
 	                %>
 	                <span class = <%=status %>></span>
@@ -208,8 +210,8 @@ td a:hover{
 	                <td>
 	                <%
 	                String status2 = "";
-                    if(r[i].getDou_Speed()==1){status2="\"icon-gonggao\"";}
-                    if(r[i].getDou_Speed()==2){status2="\"icon-normal\"";}
+                    if(r[i].getDou_Type()==1){status2="\"icon-gonggao\"";}
+                    else if(r[i].getDou_Type()==2){status2="\"icon-normal\"";}
 	                //out.print(r[i].getDou_Type());
 	                %>
 	                <span class = <%=status2 %>></span>

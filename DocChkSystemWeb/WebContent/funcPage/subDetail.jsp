@@ -129,13 +129,22 @@
 	    background:#0dadb7;
 	    padding: 6px;
 	}
+	.content{
+    margin:3px;
+    width:638px;
+    height:160px;
+    background:white;
+    border:1px solid #9c9d9d;
+    border-radius: 6px;
+    padding:3px;
+}
 	</style>
 	</head>
 
 	<script type="text/javascript">    
 	function opnefile( fileURL )
 	{
-	    window.open( fileURL, "文件內容", config="height=720,width=960" );
+	    window.open( fileURL, "file", "height=720,width=960,top=100,left=100" );
 	}
 	</script>
 
@@ -156,7 +165,7 @@
 	          
 	                <tr>
 	                    <td width="150" align="center">件速</td>
-	                    <td colspan="3">
+	                    <td >
 	                    <%
 	                    String speed="";
 	                    if( docDetail.getDou_Speed() == 0 ) speed="急件";
@@ -165,30 +174,26 @@
 	                    out.print(speed);
 	                    %>
 	                    </td>
-	                </tr>
-	            
-	                <tr>
-	                    <td width="150" align="center">流程</td>
-	                    <td><%=docDetail.getDou_Flow() %></td>
 	                    <td width="150" align="center">文件類型</td>
-	                    <td><%
-	                    String type = "";
-	                    if( docDetail.getDou_Type() == 1 ) type = "公告";
-	                    if( docDetail.getDou_Type() == 2 ) type = "一般文件";
-	                    out.print(type);
-	                    %></td>
-	                </tr>
+                        <td><%
+                        String type = "";
+                        if( docDetail.getDou_Type() == 1 ) type = "公告";
+                        if( docDetail.getDou_Type() == 2 ) type = "一般文件";
+                        out.print(type);
+                        %></td>
+	                </tr> 
 	                
 	                <tr>
 	                    <td width="150" align="center">主旨</td>
 	                    <td colspan="3">
-	                        <%=docDetail.getDou_Keynote() %>
+	                        <div class="content"><%=docDetail.getDou_Keynote() %></div>
+	                    </td>
 	                </tr>
 	          
 	                <tr>
 	                    <td width="150" align="center">說明</td>
 	                    <td colspan="3">
-	                        <%=docDetail.getDou_Content() %>
+	                       <div class="content"><%=docDetail.getDou_Content() %></div>
 	                    </td>
 	                </tr>
 	          

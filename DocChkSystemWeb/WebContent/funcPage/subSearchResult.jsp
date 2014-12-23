@@ -48,7 +48,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     function opnefile( Tmp_Id,Dou_No )
     {
     	str = "subDetail.jsp?Dou_No=" + Tmp_Id +"&realNo="+ Dou_No;
-    	window.open( str, "文件內容", config="height=720,width=960" );
+    	window.open( str, "文件內容", config="height=720,width=1024" );
     }
 
 </script>    

@@ -94,6 +94,8 @@ function opnefile( fileURL )
     int Dou_TmpId = Integer.valueOf(request.getParameter("Lib_TmpId"));
     DetailDAOImpl  impl = new DetailDAOImpl();
     Document_Detail  r = impl.searchNo(Dou_TmpId);
+    
+    String DocLibNo = request.getParameter("DocLibNo");
 
     String Author = new EmpolyeeDAOImpl().findByNo( r.getDou_Author() ).getName();
 %>
@@ -105,8 +107,8 @@ function opnefile( fileURL )
             <tbody>
                 <!--更改下面-->
           <tr>
-            <td align="center" width="150" height="40">申請編號</td>
-            <td><% out.print(r.getDou_TmpNo()); %></td>
+            <td align="center" width="150" height="40">文件編號</td>
+            <td><% out.print( DocLibNo ); %></td>
             <td align="center" width="150" >發文日期</td>
             <td>
             <% if (r.getDou_Date() !=null)

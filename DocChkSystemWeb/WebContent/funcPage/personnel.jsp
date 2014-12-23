@@ -31,6 +31,7 @@ for( DocProcess o : chkDocList )
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../css/iconmoon.css">
     <meta charset="UTF-8">
     <title>個人事務</title>
 <style>
@@ -111,6 +112,36 @@ for( DocProcess o : chkDocList )
     background: gray;
     color: white;
     }
+.icon-push_1{
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    color:#ea8010;
+    font-size:18px;
+    padding-right:6px;
+}
+.icon-0{
+    font-size:22px;
+    color:#c11920;
+    padding:0px 0px 0px 6px;
+}
+.icon-1{
+    font-size:22px;
+    color:#546b7e;
+    padding:0px 0px 0px 6px;
+}
+.icon-2{
+    font-size:22px;
+    color:#a78b51;
+    padding:0px 0px 0px 6px;
+}
+.icon-gonggao{
+    font-size:18px;
+    color:#ea8010;
+}
+.icon-normal{
+    font-size:18px;
+    color:#43464c;
+}
 </style>
 </head>
 
@@ -155,14 +186,14 @@ function changeSubBrowse( Dou_No )
                             switch( o.getDou_Speed())
                             {
                                 case 0:
-                                    DocSpeedStr = "急件";
+                                    DocSpeedStr = "\"icon-0\"";
                                     break;
                                 case 1:
-                                    DocSpeedStr = "普件";
+                                    DocSpeedStr = "\"icon-1\"";
                                     break;
                                 case 2:
                                 default:
-                                    DocSpeedStr = "其他";
+                                    DocSpeedStr = "\"icon-2\"";
                                     break;
                             }
                             
@@ -170,11 +201,11 @@ function changeSubBrowse( Dou_No )
                             switch( o.getDou_Type())
                             {
                                 case 1:
-                                    DocTypeStr = "公告";
+                                    DocTypeStr = "\"icon-gonggao\"";
                                     break;
                                 case 2:
                                 default:
-                                    DocTypeStr = "一般";
+                                    DocTypeStr = "\"icon-normal\"";
                                     break;
                             }
                             
@@ -182,8 +213,8 @@ function changeSubBrowse( Dou_No )
                                                 o.getDou_No() + ")\"";
                 %>
                 <tr onclick=<%=OnClickStr %> >
-                    <td><%=DocSpeedStr %></td>
-                    <td><%=DocTypeStr %></td>
+                    <td><span class = <%=DocSpeedStr %> ></span></td>
+                    <td><span class = <%=DocTypeStr %> ></span></td>
                     <td><%=o.getDou_Date().substring(0,11) %></td>
                     <td><%=o.getDou_Keynote() %></td>
                 </tr>
