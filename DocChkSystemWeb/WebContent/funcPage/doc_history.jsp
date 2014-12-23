@@ -165,8 +165,9 @@ td a:hover{
 </head>
 <body>
 <%
+    Empolyee m =( Empolyee) session.getAttribute("Empolyee");
     DocLibraryListDAODBImpl  impl = new DocLibraryListDAODBImpl();
-    DocLibraryList[] r = impl.findAll();
+    DocLibraryList[] r = impl.findAll(m.getNo());
 %>
 <div id="table-warp">
     <div class="table-head">

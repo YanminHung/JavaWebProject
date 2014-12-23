@@ -83,6 +83,12 @@ tr{
 }
 </style>
 </head>
+<script type="text/javascript">    
+function opnefile( fileURL )
+{
+    window.open( fileURL, "文件內容", config="height=720,width=960" );
+}
+</script>
 <body>
 <%
     int Dou_TmpId = Integer.valueOf(request.getParameter("Lib_TmpId"));
