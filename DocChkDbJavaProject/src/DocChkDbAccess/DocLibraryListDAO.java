@@ -23,28 +23,28 @@ public interface DocLibraryListDAO {
          * @param Dou_KeyNote 主旨
          * @return
          */
-        DocLibraryList findbyDouKeyNote(String  Dou_KeyNote);
+        DocLibraryList[] findbyDouKeyNote(String  Dou_KeyNote);
         /**
          * 查詢by作者
          * @param Dou_Author 作者
          * @return
          */
-        DocLibraryList findbyDouAuthor(int Dou_Author);
+        DocLibraryList[] findbyDouAuthor(int Dou_Author);
         /**
          * 查詢by日期
          * @param Dou_Date 日期
          * @return
          */
-        DocLibraryList findbyDouDate(String  Dou_Date);
+        DocLibraryList[] findbyDouDate(String  Dou_Date);
         /**
          * 查詢by部門
          * @param Emp_Depart 部門
          * @return
          */
-        DocLibraryList findbyEmpDepart(String Emp_Depart);              
+        DocLibraryList[] findbyEmpDepart(String Emp_Depart);              
 
         
-        DocLibraryList[] findAll();
+        DocLibraryList[] findAll(int Dou_Author);
         
         DocLibraryList[] findAnnouncementAll();
         

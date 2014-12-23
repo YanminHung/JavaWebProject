@@ -62,25 +62,26 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
             }
             
             @Override
-            public DocLibraryList findbyDouKeyNote(String Dou_KeyNote)
+            public DocLibraryList[] findbyDouKeyNote(String Dou_KeyNote)
             {
                 try {
-                    String SQL="Select * From LibraryList Where Dou_Keynote like ?";
+                    String SQL="Select * From LibraryList Where Lib_TmpId!=0 and Dou_Keynote like ?";
                     PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                     pstmt.setString(1, Dou_KeyNote);
                     ResultSet rs = pstmt.executeQuery();                
-                        
-                    if (rs.next())
+                    ArrayList<DocLibraryList> r = new ArrayList<DocLibraryList>();
+                    while (rs.next())
                     {
-                        DocLibraryList r = new DocLibraryList(
-                                rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),
-                                rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),
-                                rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13));                        
-                        System.out.println(r.getLib_TmpId()+" "+r.getLib_DocNo()+" "+r.getEmp_Name());
-                        return r;
+                         DocLibraryList newr = new  DocLibraryList(
+                                 rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),
+                                 rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),
+                                 rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13));               
+                         r.add(newr);   
                     }
-                 
                     pstmt.close();
+                    DocLibraryList[] r1 = r.toArray(new DocLibraryList[r.size()]);
+                    return r1;
+
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -91,26 +92,27 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
             
             
             @Override
-            public DocLibraryList findbyDouAuthor(int Dou_Author)
+            public DocLibraryList[] findbyDouAuthor(int Dou_Author)
             {
                 try {
-                    String SQL="Select * From LibraryList Where Dou_Author = ? ";
+                    String SQL="Select * From LibraryList Where Lib_TmpId!=0 and Dou_Author = ? ";
                    PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                     pstmt.setInt(1, Dou_Author);
                     ResultSet rs = pstmt.executeQuery();                
-                        
-                    if (rs.next())
+                    ArrayList<DocLibraryList> r = new ArrayList<DocLibraryList>();
+                    while (rs.next())
                     {
-                        DocLibraryList r = new DocLibraryList(
-                                rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),
-                                rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),
-                                rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13));                        
-                        System.out.println(r.getLib_TmpId()+" "+r.getLib_DocNo()+" "+r.getEmp_Name());
-                        return r;
+                         DocLibraryList newr = new  DocLibraryList(
+                                 rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),
+                                 rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),
+                                 rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13));               
+                         r.add(newr);   
                     }
-                    
-                    //stmt.close();
                     pstmt.close();
+                    DocLibraryList[] r1 = r.toArray(new DocLibraryList[r.size()]);
+                    return r1;
+                    //stmt.close();
+
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -119,26 +121,28 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
                 return null;
             }
             @Override
-            public DocLibraryList findbyDouDate(String Dou_Date)
+            public DocLibraryList[] findbyDouDate(String Dou_Date)
             {
                 try {
-                    String SQL="Select * From LibraryList Where cast(Dou_Date as date) = ?";
+                    String SQL="Select * From LibraryList Where Lib_TmpId!=0 and cast(Dou_Date as date) = ?";
                     PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                     pstmt.setString(1, Dou_Date);
                     ResultSet rs = pstmt.executeQuery();                
-                        
-                    if (rs.next())
+                    ArrayList<DocLibraryList> r = new ArrayList<DocLibraryList>();
+                    while (rs.next())
                     {
-                        DocLibraryList r = new DocLibraryList(
-                                rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),
-                                rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),
-                                rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13));                
-                        System.out.println(r.getLib_TmpId()+" "+r.getLib_DocNo()+" "+r.getEmp_Name());
-                        return r;
+                         DocLibraryList newr = new  DocLibraryList(
+                                 rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),
+                                 rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),
+                                 rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13));               
+                         r.add(newr);   
                     }
+                    pstmt.close();
+                    DocLibraryList[] r1 = r.toArray(new DocLibraryList[r.size()]);
+                    return r1;                
                     
                     //stmt.close();
-                    pstmt.close();
+
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -148,26 +152,26 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
             }
             
             @Override
-            public DocLibraryList findbyEmpDepart(String Emp_Depart)
+            public DocLibraryList[] findbyEmpDepart(String Emp_Depart)
             {
                 try {
-                    String SQL="Select * From LibraryList Where Emp_Depart = ?";            
+                    String SQL="Select * From LibraryList Where Lib_TmpId!=0 and Emp_Depart = ?";            
                     PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
                     pstmt.setString(1, Emp_Depart );
-                    ResultSet rs = pstmt.executeQuery();                
-                        
-                    if (rs.next())
+                    ResultSet rs = pstmt.executeQuery();  
+                    ArrayList<DocLibraryList> r = new ArrayList<DocLibraryList>();
+                    while (rs.next())
                     {
-                        DocLibraryList r = new DocLibraryList(
-                                rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),
-                                rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),
-                                rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13));                    
-                        System.out.println(r.getLib_TmpId()+" "+r.getLib_DocNo()+" "+r.getEmp_Name());
-                        return r;
+                         DocLibraryList newr = new  DocLibraryList(
+                                 rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),
+                                 rs.getInt(6),rs.getString(7),rs.getInt(8),rs.getString(9),
+                                 rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13));               
+                         r.add(newr);   
                     }
-                    
-                    //stmt.close();
                     pstmt.close();
+                    DocLibraryList[] r1 = r.toArray(new DocLibraryList[r.size()]);
+                    return r1;
+                    //stmt.close();
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -177,12 +181,13 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
             }  
             
             @Override 
-            public DocLibraryList[] findAll() {
+            public DocLibraryList[] findAll(int Dou_Author) {
 
                 try {
                     String SQL ="select * from LibraryList where Lib_TmpId!=0 And DATEDIFF(m,Dou_Date,SYSDATETIME()) <=3 "
-                                +"Order By Dou_Date desc";
+                                +" and Dou_Author = ? Order By Dou_Date desc";
                     PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
+                    pstmt.setInt(1, Dou_Author );
                     ResultSet rs = pstmt.executeQuery();
                     ArrayList<DocLibraryList> r = new ArrayList<DocLibraryList>();
                     while (rs.next())
@@ -209,8 +214,8 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
             public DocLibraryList[] findAnnouncementAll() {
 
                 try {
-                    String SQL ="select * from LibraryList where Dou_Type=1 and (Lib_SetTop=1 or "
-                                +"( Lib_SetTop!=1 and DATEDIFF(m,Dou_Date,SYSDATETIME()) <=3 )) "
+                    String SQL ="select * from LibraryList where Lib_TmpId!=0 and Dou_Type=1 and (Lib_SetTop=1 or "
+                                +"( Lib_TmpId!=0 and Lib_SetTop!=1 and DATEDIFF(m,Dou_Date,SYSDATETIME()) <=3 )) "
                                 +" Order By  Lib_SetTop desc,Dou_Date desc"; 
                     
                     PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
@@ -247,7 +252,7 @@ public class DocLibraryListDAODBImpl implements DocLibraryListDAO {
             
             {
                 try {
-                    String SQL ="select * from LibraryList where Lib_DocNo like ? and "
+                    String SQL ="select * from LibraryList where Lib_TmpId!=0 and Lib_DocNo like ? and "
                                 +"CAST(Dou_Type as CHAR(1)) like ? and  Dou_Keynote like ?  and  Emp_Name like ? "
                                 +"and  Emp_Depart like ? and  Dou_Date between ? and ? "
                                 +"Order By Dou_Date desc";
