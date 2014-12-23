@@ -70,7 +70,7 @@ if(!isMultipart){
 }
 
 /* 網頁專案路徑 */
-String ProjectPath = "C:\\java\\GIT\\JavaWebProject\\DocChkSystemWeb\\WebContent";
+String ProjectPath = "C:\\JavaWebProject\\DocChkSystemWeb\\WebContent";
 
 /* 上傳資料夾 */
 String savePath = "\\uploads";

@@ -41,7 +41,33 @@ public class DetailDAOImpl implements DetailDAO {
 
 	@Override
 	public void update(Document_Detail d) {
+try {
+			String SQL =
+					"Update Document_Detail Set  Dou_Type=?, Dou_Speed=?,Dou_Keynote=?,"
+					                      + "Dou_Content=?,Dou_Date=?,Dou_FlowType=?,"
+					                      + "Dou_Link=?,Dou_Draft=? where Dou_TmpNo = ?";
+			PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement( SQL );
+			
+			pstmt.setInt(1, d.getDou_Type());
+			pstmt.setInt(2, d.getDou_Speed());
+			pstmt.setString(3, d.getDou_Keynote());
+			pstmt.setString(4, d.getDou_Content());
+			//pstmt.setInt(5, d.getDou_Author());
+			pstmt.setString(5, d.getDou_Date());
+			pstmt.setInt(6, d.getDou_Flow());
+			//pstmt.setInt(8, 0);
+			//pstmt.setInt(9, 0);
+			pstmt.setString(7, d.getDou_Link());
+			pstmt.setInt(8, d.getDou_Draft());
+			pstmt.setString(9, d.getDou_TmpNo());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

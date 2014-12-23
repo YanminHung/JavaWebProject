@@ -129,6 +129,52 @@ textarea{
     padding: 6px;
 }
 </style>
+<script type="text/javascript">    
+function formSubmit( submitValue )
+{
+	
+    var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
+    var Dou_Date = document.getElementById("Dou_Date").value;
+    
+    var Dou_Speed;
+    var obj = document.getElementsByName( "Dou_Speed" );    
+    for( i = 0; i < obj.length; i++ )
+    {
+        if( obj[ i ].checked )
+        {
+            Dou_Speed = obj[ i ].value;
+            break;
+        }
+    }
+    
+    var site = document.all.Dou_FlowType.selectedIndex; 
+    var Dou_FlowType = document.all.Dou_FlowType.options[site].value;
+    
+    site = document.all.Dou_Type.selectedIndex; 
+    var Dou_Type = document.all.Dou_Type.options[site].value;
+    
+    var Dou_Keynote = document.all.Dou_Keynote.value;
+    var Dou_Content = document.all.Dou_Content.value;
+    
+    var msgStr = "Dou_TmpNo=" + Dou_TmpNo + "&" +
+                 "Dou_Date=" + Dou_Date + "&" +
+                 "Dou_Speed=" + Dou_Speed + "&" +
+                 "Dou_FlowType=" + Dou_FlowType + "&" +
+                 "Dou_Type=" + Dou_Type + "&" +
+                 "Dou_Keynote=" + Dou_Keynote + "&" +
+                 "Dou_Content=" + Dou_Content + "&" +
+                 "submit=" + submitValue;
+    
+    //alert( msgStr );
+    
+    document.form1.action="DocDraftAdd.jsp?" + msgStr;
+    
+    //alert( document.form1.action );
+    document.form1.submit();
+    
+}
+    
+</script>
 </head>
 
 <script type="text/javascript">    
@@ -141,7 +187,10 @@ function opnefile( fileURL )
 
 <body>
 <div id="table-warp">
-    <form action="DocDraft.jsp" method="post">
+    <form name = "form1" id = "form1" action="DocDraftAdd.jsp" method="post" enctype="multipart/form-data">
+	<input name="Dou_No" id="Dou_No" type="hidden" value=<%out.print(Dou_No); %>>
+    <input name="Status" id="Status" type="hidden" value=0>
+    <input name="Dou_IsHistoryCheck" id="Dou_IsHistoryCheck" type="hidden" value=0>
         <div class="title">草稿文件</div>
         <div class="table-body">
             <table id="table-b">
@@ -149,9 +198,9 @@ function opnefile( fileURL )
                 <!--更改下面-->
                 <tr>
                     <td width="150" align="center">申請編號</td>
-                    <td><input type="text" name="Dou_TmpNo"  value="<%=docDetail.getDou_TmpNo()%>"></td>
+                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo"  value="<%=docDetail.getDou_TmpNo()%>"></td>
                     <td width="150" align="center">發文日期</td>
-                    <td><input type="text" name="Dou_Date"  value="<%=docDetail.getDou_Date().substring(0,11) %>"></td>
+                    <td><input type="text" id="Dou_Date" name="Dou_Date"  value="<%=docDetail.getDou_Date().substring(0,11) %>"></td>
                 </tr>
           
                 <tr>
@@ -232,8 +281,8 @@ function opnefile( fileURL )
         </div>
         
         <div id="delete">        
-            <input name="submit" type="submit" value="發送" class="input_button_g" onclick="return confirm( '請確認發送?' )" >
-            <input name="submit" type="submit" value="暫存" class="input_button_g" onclick="return confirm( '請確認暫存?' )" >
+            <input name="submit" type="submit" value="發送" class="input_button_g" onclick="formSubmit('發送')" >
+            <input name="submit" type="submit" value="暫存" class="input_button_g" onclick="formSubmit('暫存')">
         </div>
         
     </form>
