@@ -144,7 +144,8 @@
 	<script type="text/javascript">    
 	function opnefile( fileURL )
 	{
-	    window.open( fileURL, "file", "height=720,width=960,top=100,left=100" );
+	    var p = window.open( fileURL, "file", "height=720,width=960,top=100,left=100" );
+	    p.focus();
 	}
 	</script>
 
