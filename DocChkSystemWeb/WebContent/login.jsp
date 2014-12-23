@@ -30,16 +30,14 @@ body{
   margin:0px auto;
   background:#297AAE;
   height: 80px;
-  background-image:url(../images/bg02.png);
+  background-image:url(images/bg02.png);
 }
 #logo{
   display: block;
-  background:url(images/logo.png) no-repeat;
+  background:url(images/logo2.png) no-repeat;
   float: left;
-  width: 200px;
-  height: 50px;
-  margin-left: 25px;
-  margin-top: 25px;
+  width: 400px;
+  height: 75px;
 }
 #container{
   width: 100%;

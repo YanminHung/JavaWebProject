@@ -11,12 +11,10 @@
 }
 #logo{
 	display: block;
-	background:url(../images/logo.png) no-repeat;
+	background:url(../images/logo2.png) no-repeat;
 	float: left;
-	width: 200px;
-	height: 50px;
-	margin-left: 25px;
-	margin-top: 25px;
+	width: 400px;
+	height: 75px;
 }
 #toptool span{
 	font-size: 36px;
