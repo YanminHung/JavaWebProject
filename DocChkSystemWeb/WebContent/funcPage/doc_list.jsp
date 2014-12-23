@@ -7,7 +7,7 @@ if (session.getAttribute("Login") != null )
     login = session.getAttribute("Login").toString();
 }
 
-if (!login.equals("Employee"))
+if (( !login.equals("administrator") ) && ( !login.equals("Employee") ))
 {
     response.sendRedirect("../login.jsp");
 }

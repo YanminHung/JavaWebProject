@@ -27,7 +27,7 @@ public interface DocLibraryDAO {
 	 * 強迫設定Lib_SetTop為1(置頂),預設0(正常)
 	 * @param Lib_Id 流水號Key值
 	 */
-    public void updateLibSetTop(int Lib_Id ); 
+    public void updateLibSetTop(int Lib_Id); 
 	/**
 	 * 刪除錯誤資料
 	 * @param Lib_Id 流水號Key值

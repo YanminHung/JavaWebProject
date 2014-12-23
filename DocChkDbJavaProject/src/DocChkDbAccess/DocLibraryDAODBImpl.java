@@ -110,15 +110,32 @@ public class DocLibraryDAODBImpl implements DocLibraryDAO {
 		
 		// 強迫設定Lib_SetTop為1(置頂),預設0(正常)
 		@Override 
-		public void updateLibSetTop(int Lib_Id ) {
+		public void updateLibSetTop(int Lib_Id){
            
             try {
-                String SQL="Update Document_Library Set Lib_SetTop=1 where Lib_Id=?";
-                PreparedStatement pstmt = DocChkDbConn.GetConnect().prepareStatement(SQL);
-                pstmt.setInt(1,Lib_Id);
-                pstmt.executeUpdate();
-                pstmt.close();
                 
+            	String SQL1="Select * from Document_Library where Lib_Id=?";
+            	String SQL2="Update Document_Library Set Lib_SetTop = ? where Lib_Id = ?";
+                PreparedStatement pstmt1 = DocChkDbConn.GetConnect().prepareStatement(SQL1);
+                PreparedStatement pstmt2 = DocChkDbConn.GetConnect().prepareStatement(SQL2);
+                pstmt1.setInt(1,Lib_Id);
+                ResultSet rs = pstmt1.executeQuery();
+                 if (rs.next())
+                {
+                     if (rs.getInt(4)==1)
+                     {
+                    	pstmt2.setInt(1,0);
+                     }
+                     else
+                     {
+                     	pstmt2.setInt(1,1);
+                     }
+                     pstmt2.setInt(2,Lib_Id);
+                     pstmt2.executeUpdate();
+                     pstmt2.close();
+                }
+                pstmt1.close(); 
+            
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

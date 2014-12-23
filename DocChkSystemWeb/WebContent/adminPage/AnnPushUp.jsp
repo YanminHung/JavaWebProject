@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.*" %>
 <%
 String login = "";
 if (session.getAttribute("Login") != null )
@@ -17,6 +17,7 @@ if (!login.equals("administrator"))
 <head>
     <meta charset="UTF-8">
     <title>版面公告維護-置頂</title>
+    <link rel="stylesheet" href="../css/iconmoon.css">
     <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/input_button_g.css">
 <script type="text/javascript"> 
@@ -104,13 +105,85 @@ function check_all(obj,cName)
     background:#0dadb7;
     padding: 6px;
 }
+a:hover{
+    color:#58C3E5;
+}
+
+td a{
+    text-decoration: none;
+    color:black;
+}
+td a:hover{
+    text-decoration: none;
+    color:#58C3E5;
+}
+#table-b tr:hover{
+    background: gray;
+    color: white;
+}
+#table-b
+{
+    cursor: pointer;
+}  
+.icon-0{
+	font-size:22px;
+	color:#c11920;
+	padding:0px 0px 0px 6px;
+}
+.icon-1{
+	font-size:22px;
+	color:#546b7e;
+	padding:0px 0px 0px 6px;
+}
+.icon-2{
+	font-size:22px;
+	color:#a78b51;
+	padding:0px 0px 0px 6px;
+}
+.icon-gonggao{
+	font-size:22px;
+	color:#ea8010;
+}
+.icon-normal{
+	font-size:22px;
+	color:#43464c;
+}
 </style>
+<script type="text/javascript"> 
+function check_all(obj,cName) 
+{ 
+    var checkboxs = document.getElementsByName(cName); 
+    for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;} 
+} 
+</script>
+<script type="text/javascript"> 
+function checkAll(eventInfo) {
+
+    var options = document.getElementsByClassName("checkboxExample2");
+    for (var i = 0; i < options.length; i++) {
+        options[i].checked = event.srcElement.checked;
+    }
+}
+</script>
+<script type="text/javascript">    
+    function ShowPage( DocLibNo, Lib_TmpId )
+    {
+        document.location.href="../funcPage/doc_list.jsp?Lib_TmpId=" + Lib_TmpId +
+        		               "&DocLibNo=" + DocLibNo;
+    }
+
+</script> 
 </head>
 <body>
+<%             
+request.setCharacterEncoding("utf-8");
+DocLibraryListDAODBImpl  impl = new DocLibraryListDAODBImpl();
+DocLibraryList[] r  = impl.findAnnouncementAll();
+%>
 <div id="table-warp">
-<form action="" method="">
+<form action="AnnPushUpEdit.jsp" method="post">
     <div class="table-head">
-        <div class="title">版面維護</div>
+        <div class="title">版面維護</div> 
         <table id="table-h">
             <thead>
                 <tr>
@@ -126,227 +199,42 @@ function check_all(obj,cName)
         <table id="table-b">
             <tbody>
                 <!--更改下面-->
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>普</td>
-                    <td>2014-07-31</td>
-                    <td>測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="select" id="select" /></td>
-                    <td>測試</td>
-                    <td>2</td>
-                    <td>測試</td>
-                </tr>
+                             <%
+                            if( ( r != null ) && ( r.length != 0 ) )
+                            {
+                            for (int i=0;i<r.length;i++)
+                            {    
+                            	  String DocLibNo = r[i].getLib_DocNo();
+                                  String funcStr = "\"ShowPage('" +DocLibNo + "',"+r[i].getLib_TmpId()+ ")\"";
+                                 
+                            %>
+                            <tr>
+                            <td><input type="checkbox" name="chkboxflag" id="chkboxflag" value=<%=r[i].getLib_Id()%> ></td> 
+                            <td>
+	                        <% 	  
+	                         String status = "";
+                             if(r[i].getLib_SetTop()==0){status="";}
+                             else if(r[i].getLib_SetTop()==1){status="\"icon-push_1\"";}
+	                        %>
+	                        <span class = <%=status %>></span>
+                            </td>
+                            <td><%=r[i].getDou_Date().substring(0,11)%></td>
+                            <td onclick=<% out.print( funcStr ); %>><%=r[i].getDou_Keynote() %></td>
+                            </tr>
+                           <%  }
+                           }
+                            else
+                            {
+                            %>
+                            <tr><td colspan="2" >無公告資料</td></tr> 
+                            <%
+                            }
+                            %>
             </tbody>
         </table>
     </div>
         <div id="delete">
-            <input type="submit" value="置頂" name='delete' class="input_button_g">
+            <input type="submit" value="置頂變更" name='delete' class="input_button_g">
         </div>
 </form>
 </div>
