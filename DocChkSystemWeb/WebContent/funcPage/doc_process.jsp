@@ -58,6 +58,11 @@ function ifram_change( Proc_TempNo )
 	
 	//document.location.href="doc_processDetail.jsp?Proc_TempNo=" + Proc_TempNo  ;
 }
+function check_all(obj,chIsHis) 
+{ 
+    var checkboxs = document.getElementsByName(chIsHis); 
+    for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;} 
+} 
 </script>
 <style>
 *{
@@ -203,7 +208,7 @@ a{
         <table id="table-h">
             <thead>
                 <tr>
-                <th><input type="checkbox" name="allselect" id="allselect" onclick="check_all(this,'select')"/></th>
+                <th><input type="checkbox" name="allselect" id="allselect" onclick="check_all(this,'chIsHis')"/></th>
                 <th>審核狀態</th>
                 <th>日期</th>
                 <th>主旨</th>
