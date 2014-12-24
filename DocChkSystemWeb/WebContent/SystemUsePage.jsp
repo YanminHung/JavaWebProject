@@ -78,14 +78,14 @@ function changeSubBrowse( str )
     <div id="lside" _height="auto">
         <div id="hello">
 	        <div id="bg">
-		        <%
+		        <%/*
 		            Empolyee m =(Empolyee) session.getAttribute("Empolyee");
 		            
 		            if( m == null )
 		                response.sendRedirect("login.jsp");
-		        %>
+		        */%>
 		        <span class="span1">Welcome</span>
-		        <span class="span2"><%out.print(m.getName());%></span>
+		        <span class="span2">管理員<%//out.print(m.getName());%></span>
 	        </div>
         </div>
         <div class="nav">

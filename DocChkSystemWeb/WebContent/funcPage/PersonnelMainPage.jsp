@@ -236,9 +236,11 @@ function ShowPage( DocLibNo, Lib_TmpId )
             </tbody>
         </table>
     </div>
+    <% if( !login.equals("administrator") ) {%>
     <div id="iframe-con">
         <iframe name="Personnel" width="100%" height="350" src="personnel.jsp" frameborder="0" scrolling="no"></iframe>
     </div>
+    <% } %>
 </div>
 </body>
 </html>
