@@ -19,7 +19,7 @@
     int Dou_Speed=Integer.valueOf(request.getParameter("Dou_Speed"));
     String Dou_Keynote=request.getParameter("Dou_Keynote");
     String Dou_Content=request.getParameter("Dou_Content");
-
+	String Dou_Link=request.getParameter("Dou_Link");
     String Dou_Date=request.getParameter("Dou_Date");
     int Dou_FlowType=Integer.valueOf(request.getParameter("Dou_FlowType"));
 
@@ -30,7 +30,7 @@
     d.setDou_Content(Dou_Content);
     d.setDou_Date(Dou_Date);
     d.setDou_Flow(Dou_FlowType);
-    
+    out.print(Dou_Link);
     
     out.print( "<p> submit: " + request.getParameter("submit") + "</p>" );
     if(request.getParameter("submit").equals("發送"))
@@ -43,108 +43,17 @@
     	out.print( "<p> submit: PP </p>" );
     	d.setDou_Draft(1);
     }
-    /*out.print(Dou_TmpNo+" "+Dou_Type+" "+
+    out.print(Dou_TmpNo+" "+Dou_Type+" "+
   		  Dou_Speed+" "+Dou_Keynote+" "+
   		  Dou_Content+" "+Dou_Date+" "+
-  		  Dou_FlowType+" "+d.getDou_Link()+" "+d.getDou_Draft());*/
+  		  Dou_FlowType+" "+d.getDou_Link()+" "+d.getDou_Draft());
     
 %>
 <%
 
-// This pattern is used to get the basename of a filename
-final Pattern basenamePattern = Pattern.compile("^.*[/\\\\]");
 
-// Check that we have a file upload request
-boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-String DbFileLink="0";
-// if not, send to message page with the error message
-if(!isMultipart){
-    request.setAttribute("msg", "Request was not multipart!");
-    d.setDou_Link("0");
-    //DetailDAOImpl impl= new DetailDAOImpl();
-    //impl.add(d);
-	//request.getRequestDispatcher("PersonnelMainPage.jsp").forward(request, response);
-    //return;
-}
-
-/* 網頁專案路徑 */
-String ProjectPath = "C:\\JavaWebProject\\DocChkSystemWeb\\WebContent";
-
-/* 上傳資料夾 */
-String savePath = "\\uploads";
-
-String uploadPath = System.getProperty("os.name").matches("Windows.*") ?
-                    ProjectPath + savePath :
-                    "/tmp/uploads/";
-
-/* 檢查資料夾是否存在，否則建立 */
-File saveDir = new File(uploadPath);    
-if(!saveDir.exists()){
-  saveDir.mkdir();
-}
-
-out.print( "<p>" + uploadPath + "</p>" ); 
-
-/* 員工編號 */
-String EmpIdPath = m.getId();  
-
-uploadPath += "\\";
-uploadPath += EmpIdPath;
-
-out.print( "<p>" + uploadPath + "</p>" ); 
-
-/* 檢查資料夾是否存在，否則建立 */
-saveDir = new File(uploadPath);    
-if(!saveDir.exists()){
-  saveDir.mkdir();
-}
-
-/* Date Path String */
-SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-Date dt=new Date();
-String dts=sdf.format(dt);
-
-dts = "\\" + dts;
-uploadPath += dts;
-
-/* 檢查資料夾是否存在，否則建立 */
-saveDir = new File(uploadPath);    
-if(!saveDir.exists()){
-  saveDir.mkdir();
-}
-
-// Create a new file upload handler
-ServletFileUpload upload = new ServletFileUpload();
-
-// Parse the request
-FileItemIterator iter = upload.getItemIterator(request);
-while (iter.hasNext()) {
-    FileItemStream item = iter.next();
-    InputStream stream = item.openStream();
-    if (!item.isFormField()) {
-        String fileName = item.getName();
-        if(!fileName.equals("") ){
-        String subfileName = fileName.substring( fileName.lastIndexOf('.') );
-        
-        /* 檔名為申請編號 */
-        fileName = Dou_TmpNo + subfileName;  
-        
-        String uploadedFile = uploadPath + "\\" + basenamePattern.matcher(fileName).replaceFirst("");
-
-        IOUtils.copy(stream, new FileOutputStream(uploadedFile));
-
-        request.setAttribute("msg", "Uploaded '" + fileName + "' to '" + uploadedFile);
-        
-        DbFileLink = "\\DocChkSystemWeb" + savePath + "\\" + EmpIdPath + dts + "\\" + fileName;
-        
-        DbFileLink = DbFileLink.replace( '\\', '/' );
-        
-        out.print( "<p>" + DbFileLink + "</p>" ); //link位置
-        
-    }
-}
-}
-	d.setDou_Link(DbFileLink);
+	d.setDou_Link(Dou_Link);
+	
 	DetailDAOImpl impl= new DetailDAOImpl();
     impl.update(d);
 	//

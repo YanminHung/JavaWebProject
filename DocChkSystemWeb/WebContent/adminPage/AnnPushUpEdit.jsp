@@ -15,8 +15,8 @@
     {    
         for (String o: doudel)
         {
-          	//out.print("aaa");
-          	DocLibrary topr=impl.findbyLibTmpId(Integer.valueOf(o));
+          	out.print(o);
+          	DocLibrary topr=impl.findById(Integer.valueOf(o));
         	if ( topr != null) 
         	   {
           		impl.updateLibSetTop(Integer.valueOf(o));
