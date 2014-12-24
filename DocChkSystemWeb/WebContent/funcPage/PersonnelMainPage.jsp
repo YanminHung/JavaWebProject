@@ -172,8 +172,9 @@ function ShowPage( DocLibNo, Lib_TmpId )
                 <tr>
                 <th>件速</th>
                 <th>類型</th>
-                <th>日期</th>
-                <th>主旨</th>
+                <th>日期</th> 
+                 <th>&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;</th>                 
+                <th>&nbsp;&nbsp&nbsp;&nbsp主旨</th>
                 </tr>
             </thead>
         </table>
@@ -221,8 +222,13 @@ function ShowPage( DocLibNo, Lib_TmpId )
                         }
                     %>
                     </td>
-                    <td><i class="icon-push_1"></i><%=r[i].getDou_Keynote()%> </td>                      
-                   
+                    <td>
+                     <%
+	                     String status3 = "" ;
+                         if(r[i].getLib_SetTop()==1){status3="\"icon-push_1\"";}
+             
+                     %> 
+                    <i class = <%=status3 %>></i></td><td><%=r[i].getDou_Keynote()%></td>
                 </tr>
             <%  }
             }

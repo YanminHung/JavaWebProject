@@ -42,15 +42,7 @@ out.println( result );
 <script type="text/javascript">    
     function ReloadPage( result )
     {
-        if( result == 0 )
-        {
-            alert( "新增職階錯誤" );
-        }
-        else
-        {
-        	alert( "新增成功" );
-        }
-        document.location.href="positionData.jsp";
+        document.location.href="positionData.jsp?msg=" + result;
     }
     
 </script>
@@ -60,7 +52,6 @@ out.println( result );
 %>
 
 <body onLoad=<%= onLoadStr %> >
-
 
 <body>
 
