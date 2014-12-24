@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.ArrayList,java.util.*,java.text.*"%>
 <!DOCTYPE html>
 
 <%
@@ -26,6 +26,9 @@ if( Dou_No == null )
 Document_Detail docDetail = new DetailDAOImpl().searchNo( Integer.valueOf(Dou_No) );
 String Author = new EmpolyeeDAOImpl().findByNo( docDetail.getDou_Author() ).getName();
 
+SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd");
+Date dt=new Date();
+String dts2 = sdf2.format(dt);
 
 %>
 
@@ -133,7 +136,9 @@ textarea{
 <script type="text/javascript">    
 function formSubmit( submitValue )
 {
-	
+	document.getElementById('Dou_TmpNo').disabled=false;
+    document.getElementById('Dou_Date').disabled=false;
+    
     var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
     var Dou_Date = document.getElementById("Dou_Date").value;
     var Dou_Link = document.getElementById("Dou_Link").value;
@@ -202,9 +207,9 @@ function opnefile( fileURL )
                 <!--更改下面-->
                 <tr>
                     <td width="150" align="center">申請編號</td>
-                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo"  value="<%=docDetail.getDou_TmpNo()%>"></td>
+                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo" disabled="disabled" value="<%=docDetail.getDou_TmpNo()%>"></td>
                     <td width="150" align="center">發文日期</td>
-                    <td><input type="text" id="Dou_Date" name="Dou_Date"  value="<%=docDetail.getDou_Date().substring(0,11) %>"></td>
+                    <td><input type="text" id="Dou_Date" name="Dou_Date" disabled="disabled" value="<% out.print(dts2); %>"></td>
                 </tr>
           
                 <tr>

@@ -124,6 +124,9 @@ textarea{
 <script type="text/javascript">    
 function formSubmit( submitValue )
 {
+	document.getElementById('Dou_TmpNo').disabled=false;
+	document.getElementById('Dou_Date').disabled=false;
+	
     var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
     var Dou_Date = document.getElementById("Dou_Date").value;
     
@@ -183,9 +186,9 @@ function formSubmit( submitValue )
                 <!--更改下面-->
                 <tr>
                     <td width="150" align="center">申請編號</td>
-                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo" value="<% out.print(m.getId() + dts); %>"></td>
+                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo" disabled="disabled" value="<% out.print(m.getId() + dts); %>"></td>
                     <td width="150" align="center">發文日期</td>
-                    <td><input type="text" id="Dou_Date" name="Dou_Date" value="<% out.print(dts2); %>"></td>
+                    <td><input type="text" id="Dou_Date" name="Dou_Date" disabled="disabled" value="<% out.print(dts2); %>"></td>
                 </tr>
           
                 <tr>
