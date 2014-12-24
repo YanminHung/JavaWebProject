@@ -190,9 +190,34 @@ function ReloadPage()
 {
     window.location.reload();
 }
+
+function showMsg( result )
+{
+    if( result == "0" )
+    {
+        alert( "新增職階錯誤" );
+    }
+    else if( result == "1" )
+    {
+        alert( "新增成功" );
+    }
+}
+
 </script>
 
-<body>
+<%
+   request.setCharacterEncoding("utf-8");
+   String msg = request.getParameter("msg");
+   
+   if( msg == null )
+   {
+       msg = "2";
+   }
+   
+   String onLoadStr = "\"showMsg(" + msg + ")\"";
+%>
+
+<body onLoad=<%= onLoadStr %>>
 <div id="table-warp">
     <div id="left">
         <form action="addNewPos.jsp" method="post" onsubmit="confirm( '請確認新增?' )" >
