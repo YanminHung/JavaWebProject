@@ -136,6 +136,8 @@ function formSubmit( submitValue )
 	
     var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
     var Dou_Date = document.getElementById("Dou_Date").value;
+    var Dou_Link = document.getElementById("Dou_Link").value;
+    
     
     var Dou_Speed;
     var obj = document.getElementsByName( "Dou_Speed" );    
@@ -164,6 +166,7 @@ function formSubmit( submitValue )
                  "Dou_Type=" + Dou_Type + "&" +
                  "Dou_Keynote=" + Dou_Keynote + "&" +
                  "Dou_Content=" + Dou_Content + "&" +
+                 "Dou_Link="+ Dou_Link + "&" +
                  "submit=" + submitValue;
     
     //alert( msgStr );
@@ -190,7 +193,7 @@ function opnefile( fileURL )
 <div id="table-warp">
     <form name = "form1" id = "form1" action="DocDraftAdd.jsp" method="post" enctype="multipart/form-data">
 	<input name="Dou_No" id="Dou_No" type="hidden" value=<%out.print(Dou_No); %>>
-    <input name="Status" id="Status" type="hidden" value=0>
+    <input name="Dou_Link" id="Dou_Link" type="hidden" value=<%=docDetail.getDou_Link() %>>
     <input name="Dou_IsHistoryCheck" id="Dou_IsHistoryCheck" type="hidden" value=0>
         <div class="title">草稿文件</div>
         <div class="table-body">
@@ -220,12 +223,18 @@ function opnefile( fileURL )
 	                    <%
 	                    Document_FlowTypeDAOImpl impl = new Document_FlowTypeDAOImpl();
 	                    // 職階關係表尚未建立完成，先列出所有流程
-	                    ArrayList< Document_FlowType > flowList = impl.getAll();
+	                    ArrayList< Document_FlowType > flowList = impl.getAllEnableFlow();
 	                    
 	                    for( Document_FlowType o : flowList )
 	                    {
 	                    %>
-	                    <option value=<%=o.getFlowType() %> > <%=o.getFlowName() %> </option>
+	                    <option value=<%=o.getFlowType() %> 
+	                    
+	                    <%
+	                    if( docDetail.getDou_Flow() == o.getFlowType() ) out.print(" selected=\"selected\"");
+	                    %>
+	                    
+	                    > <%=o.getFlowName() %> </option>
 	                    <%
 	                    }
 	                    %>	                     
