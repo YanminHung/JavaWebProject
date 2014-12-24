@@ -70,7 +70,7 @@ if(!isMultipart){
 }
 
 /* 網頁專案路徑 */
-String ProjectPath = "C:\\JavaWebProject\\DocChkSystemWeb\\WebContent";
+String ProjectPath = "C:\\java\\GIT\\JavaWebProject\\DocChkSystemWeb\\WebContent";
 
 /* 上傳資料夾 */
 String savePath = "\\uploads";
@@ -143,8 +143,8 @@ while (iter.hasNext()) {
         
         out.print( "<p>" + DbFileLink + "</p>" ); //link位置
         
+        }
     }
-}
 }
 	d.setDou_Link(DbFileLink);
 	DetailDAOImpl impl= new DetailDAOImpl();
