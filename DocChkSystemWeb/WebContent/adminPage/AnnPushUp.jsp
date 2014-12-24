@@ -125,6 +125,14 @@ td a:hover{
 {
     cursor: pointer;
 }  
+.icon-push_1{
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	color:#ea8010;
+	font-size:18px;
+	padding-right:6px;
+}
+
 .icon-0{
 	font-size:22px;
 	color:#c11920;
@@ -212,8 +220,7 @@ DocLibraryList[] r  = impl.findAnnouncementAll();
 	               <td>
                     <%
 	                String status = "";
-                    if(r[i].getDou_Type()==1){status="\"icon-gonggao\"";}
-                    else{status="\"icon-normal\"";}
+                    if(r[i].getLib_SetTop()==1){status="\"icon-push_1\"";}
                     //out.print(r[i].getDou_Type());
                     %> 
                     <span class = <%=status %>></span>
