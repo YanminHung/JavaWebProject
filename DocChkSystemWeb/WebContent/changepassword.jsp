@@ -20,7 +20,7 @@ if (!login.equals("Employee"))
     <meta charset="UTF-8">
     <title>變更密碼</title>
     <link rel="stylesheet" href="css/buttons_small.css"> 
-    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/jquery-1.3.2.js" type="text/javascript"></script>
     <script src="js/jquery.validate.js" type="text/javascript"></script>
     <script src="js/messages.js" type="text/javascript"></script>
 <script>
@@ -45,6 +45,7 @@ $(document).ready(function(){
     float: left;
     left: 50%;
     margin: 100px -200px;
+    background:white;
     }
 .title{
     width: 388px;

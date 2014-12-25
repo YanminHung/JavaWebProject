@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="DocChkDbAccess.*,java.util.ArrayList,java.util.*,java.text.*"%>
 <!DOCTYPE html>
 
 <%
@@ -26,6 +26,9 @@ if( Dou_No == null )
 Document_Detail docDetail = new DetailDAOImpl().searchNo( Integer.valueOf(Dou_No) );
 String Author = new EmpolyeeDAOImpl().findByNo( docDetail.getDou_Author() ).getName();
 
+SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd");
+Date dt=new Date();
+String dts2 = sdf2.format(dt);
 
 %>
 
@@ -133,9 +136,13 @@ textarea{
 <script type="text/javascript">    
 function formSubmit( submitValue )
 {
-	
+	document.getElementById('Dou_TmpNo').disabled=false;
+    document.getElementById('Dou_Date').disabled=false;
+    
     var Dou_TmpNo = document.getElementById("Dou_TmpNo").value;
     var Dou_Date = document.getElementById("Dou_Date").value;
+    var Dou_Link = document.getElementById("Dou_Link").value;
+    
     
     var Dou_Speed;
     var obj = document.getElementsByName( "Dou_Speed" );    
@@ -164,6 +171,7 @@ function formSubmit( submitValue )
                  "Dou_Type=" + Dou_Type + "&" +
                  "Dou_Keynote=" + Dou_Keynote + "&" +
                  "Dou_Content=" + Dou_Content + "&" +
+                 "Dou_Link="+ Dou_Link + "&" +
                  "submit=" + submitValue;
     
     //alert( msgStr );
@@ -190,7 +198,7 @@ function opnefile( fileURL )
 <div id="table-warp">
     <form name = "form1" id = "form1" action="DocDraftAdd.jsp" method="post" enctype="multipart/form-data">
 	<input name="Dou_No" id="Dou_No" type="hidden" value=<%out.print(Dou_No); %>>
-    <input name="Status" id="Status" type="hidden" value=0>
+    <input name="Dou_Link" id="Dou_Link" type="hidden" value=<%=docDetail.getDou_Link() %>>
     <input name="Dou_IsHistoryCheck" id="Dou_IsHistoryCheck" type="hidden" value=0>
         <div class="title">草稿文件</div>
         <div class="table-body">
@@ -199,9 +207,9 @@ function opnefile( fileURL )
                 <!--更改下面-->
                 <tr>
                     <td width="150" align="center">申請編號</td>
-                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo"  value="<%=docDetail.getDou_TmpNo()%>"></td>
+                    <td><input type="text" id = "Dou_TmpNo" name="Dou_TmpNo" disabled="disabled" value="<%=docDetail.getDou_TmpNo()%>"></td>
                     <td width="150" align="center">發文日期</td>
-                    <td><input type="text" id="Dou_Date" name="Dou_Date"  value="<%=docDetail.getDou_Date().substring(0,11) %>"></td>
+                    <td><input type="text" id="Dou_Date" name="Dou_Date" disabled="disabled" value="<% out.print(dts2); %>"></td>
                 </tr>
           
                 <tr>
@@ -220,12 +228,18 @@ function opnefile( fileURL )
 	                    <%
 	                    Document_FlowTypeDAOImpl impl = new Document_FlowTypeDAOImpl();
 	                    // 職階關係表尚未建立完成，先列出所有流程
-	                    ArrayList< Document_FlowType > flowList = impl.getAll();
+	                    ArrayList< Document_FlowType > flowList = impl.getAllEnableFlow();
 	                    
 	                    for( Document_FlowType o : flowList )
 	                    {
 	                    %>
-	                    <option value=<%=o.getFlowType() %> > <%=o.getFlowName() %> </option>
+	                    <option value=<%=o.getFlowType() %> 
+	                    
+	                    <%
+	                    if( docDetail.getDou_Flow() == o.getFlowType() ) out.print(" selected=\"selected\"");
+	                    %>
+	                    
+	                    > <%=o.getFlowName() %> </option>
 	                    <%
 	                    }
 	                    %>	                     

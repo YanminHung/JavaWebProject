@@ -54,97 +54,132 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     }
 
 </script>    
-
 <style>
 *{
     margin:0px 0px;
     padding:0px 0px;
     }
-#table-warp{
-    width:800px;
-    margin:6px auto;
-    text-align:center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    }
+table#table-b, table#table-h{
+    border-spacing:0;
+    border-collapse:collapse;
+    table-layout:fixed;
+    width:1000px;
+}
 .title{
-    width: 788px;
+
     background:#43464c;
     color:white;
     font-family: 微軟正黑體;
     text-align:center;
     font-size: 22px;
     padding: 6px;
+
 }
-.table-head{
-    background:#0dadb7;
-    color:white;
-    font-family: 微軟正黑體;
-    text-align:left;
-    }
-.table-body{
-    width:100%; 
-    height:auto !important;
-    height:300px;
-    max-height:300px;
-    overflow-y:scroll;
-    text-align:left;
-    background:#e9e9e9;
-    font-family: 微軟正黑體;
-    font-size: 16px;
-    }
-.table-head table,.table-body table{
-    width:100%;
-    }
-.table-head th:first-of-type,.table-body td:first-of-type{
-    width:130px;
-}
-.table-head th:nth-child(2),.table-body td:nth-child(2)
-{
-    width:80px;
-}
-.table-head th:nth-child(3),.table-body td:nth-child(3)
-{
-    width:100px;
-}
-.table-head th:nth-child(4),.table-body td:nth-child(4)
-{
-    width:80px;
-}
-.table-head th:nth-child(5),.table-body td:nth-child(5)
-{
-    width:80px;
-}
-.table-head th:last-of-type,.table-body td:last-of-type
-{
-    width:330px;
-}
-.table-body table tr:nth-child(2n+1){
-    background-color:#f6f6f6;
-    }
-#table-b{
-    border-collapse:collapse;
-    border: 0px;
-    table-layout: fixed;
-    cursor: pointer;
-    }
 #table-h,tr,th{
     border-collapse:collapse;
     border: 0px;
-    padding: 6px 5px 6px 7px;
+    padding: 6px;
     }
 #table-b,tr,td{
     border-collapse:collapse;
     border: 0px;
-    padding: 6px 1px 6px 6px;
-    text-overflow:ellipsis;
+    padding: 6px;
+        text-overflow:ellipsis;
     -moz-text-overflow: ellipsis;
-    white-space:nowrap;
-    overflow-x:hidden;
     }
-#table-b tr:hover{
-	background: gray;
-	color: white;
-	}
+table#table-b td, table#table-h th{
+    overflow:hidden;
+    white-space:nowrap;	
+}
+#table-body table tr:nth-child(2n+1){
+    background-color:#f6f6f6;
+    }
+div#table-head{
+    overflow:hidden;
+    text-align: left;
+    font-size: 18px;
+    font-family:微軟正黑體;
+    background:#0dadb7;
+    color:white;
+
+}
+#table-con{
+   position:relative;
+}
+div#table-body{
+    width:800px;
+    overflow:hidden;
+    height:auto !important;
+    height:300px;
+    max-height:300px;
+    text-align: left;
+    font-size: 16px;
+    font-family:微軟正黑體;
+}
+
+#table-warp{
+    width:800px;
+    margin:6px auto;
+    text-align:center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    overflow:hidden;
+
+}
+
+#table-head th:first-of-type,#table-body td:first-of-type{
+    width:150px;
+}
+#table-head th:nth-child(2),#table-body td:nth-child(2)
+{
+    width:80px;
+}
+#table-head th:nth-child(3),#table-body td:nth-child(3)
+{
+    width:80px;
+}
+#table-head th:nth-child(4),#table-body td:nth-child(4)
+{
+    width:80px;
+}
+#table-head th:nth-child(5),#table-body td:nth-child(5)
+{
+    width:80px;
+}
+#table-head th:last-of-type,#table-body td:last-of-type
+{
+    width:330px;
+}
+#y-fake-scroll{
+    overflow-y:scroll; 
+    overflow-x:hidden;
+    background:transparent; 
+    right:0;
+    position:absolute;
+    max-height:300px;
+    top:50px;
+}
+
+#x-fake-scroll{
+    height:40px;
+    margin-top:-23px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    margin-top:expression('0px');/* IE 7 fix*/
+    height:expression('17px'); /* IE 7 fix*/
+}
+
+#y-scroll{
+    max-height:150px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overflow:scroll;
+    width:1000px;
+    padding:0px 1px 1px 1px;
+}
+#table-head
+{
+    padding:1px 1px 0 1px;
+}
 .icon-gonggao{
 	font-size:18px;
 	color:#F1C40F;
@@ -155,14 +190,13 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 }
 </style>
 </head>
-
 <body>
 <div id="table-warp">
-<form action="" method="">
-    <div class="table-head">
-        <div class="title">查詢結果</div>
+<div class="title">查詢結果</div>
+<form action="" method="post">
+<div id="table-con">
+    <div id="table-head">
         <table id="table-h">
-            <thead>
 				<tr>
 					<th>查詢編號</th>
 					<th>文件類型</th>
@@ -171,12 +205,10 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
 					<th>部門</th>
 					<th>主旨</th>
 				</tr>
-            </thead>
         </table>
     </div>
-    <div class="table-body">
+    <div id="table-body">
         <table id="table-b">
-            <tbody>
                 <!--更改下面-->
                 <% 
                 for(int i=0 ; i<r.length ; i++){
@@ -203,10 +235,21 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
                     <td><%out.print(r[i].getDou_Keynote()); %></td>
                 </tr>
 				<% } %>
-            </tbody>
         </table>
     </div>
 </form>
+	<div id="y-fake-scroll" >
+		<div id="y-table-emulator" style="width:40px;">
+		&nbsp;
+		</div>
+	</div>
+	<div id="x-fake-scroll">
+		<div id="x-table-emulator">
+		&nbsp;
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/script.js"></script>
+</div>
 </div>
 </body>
 </html>

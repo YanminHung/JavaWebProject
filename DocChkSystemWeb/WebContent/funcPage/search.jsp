@@ -184,7 +184,7 @@ if ( ( !login.equals("administrator") ) && ( !login.equals("Employee") ) )
     </form>
     </div>
     <div class="iframe-con">
-        <iframe id="subPage" name="subPage" width="100%" height="350" src="subSearchResult.jsp" frameborder="0" scrolling="no"></iframe>
+        <iframe id="subPage" name="subPage" width="100%" height="500" src="subSearchResult.jsp" frameborder="0" scrolling="no"></iframe>
     </div>
 </div>
 </body>
