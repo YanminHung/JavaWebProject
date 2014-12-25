@@ -91,7 +91,7 @@ table#table-b td, table#table-h th{
     overflow:hidden;
     white-space:nowrap;	
 }
-#table-body table tr:nth-child(2n+1){
+#table-b tr:nth-child(2n+1){
     background-color:#f6f6f6;
     }
 div#table-head{
@@ -188,6 +188,13 @@ div#table-body{
 	font-size:18px;
 	color:#43464c;
 }
+#table-b{
+    cursor: pointer;
+    }
+#table-b tr:hover{
+    background: gray;
+    color: white;
+    }
 </style>
 </head>
 <body>
